@@ -1,0 +1,388 @@
+
+tile_bootloader_ipu1.elf:	file format elf32-colossus
+architecture: colossus
+start address: 0x00040000
+
+Program Header:
+    LOAD off    0x000000f4 vaddr 0x00040000 paddr 0x00040000 align 2**2
+         filesz 0x000003b0 memsz 0x000003b0 flags r-x
+
+Dynamic Section:
+
+Sections:
+Idx Name                 Size     VMA      Type
+  0                      00000000 00000000 
+  1 .text                000003b0 00040000 TEXT
+  2 .data                00000000 00044000 TEXT
+  3 .interleave_1_bank_a 00000000 00044000 DATA
+  4 .interleave_2_bank_a 00000000 00060000 DATA
+  5 .comment             00000013 00000000 
+  6 .symtab              00000300 00000000 
+  7 .shstrtab            0000005a 00000000 
+  8 .strtab              00000349 00000000 
+
+SYMBOL TABLE:
+00040004 l       .text	00000000 _reg_parity_reset
+00040388 l       .text	00000000 _worker_clear_mrf_arf
+00040358 l       .text	00000000 _clear_mrf
+00040018 l       .text	00000000 _bootloader_init
+00040038 l       .text	00000000 _relocate_subroutines
+000402dc l       .text	00000000 _get_copy_clear_instructions
+0004030c l       .text	00000000 _load_frame
+0000000f l       *ABS*	00000000 load_frame_size
+00040348 l       .text	00000000 _cpclr_last
+00000004 l       *ABS*	00000000 cpclr_last_size
+00040070 l       .text	00000000 _bootload_begin
+000400ec l       .text	00000000 _master_wait
+000400dc l       .text	00000000 _slave_wait
+000400fc l       .text	00000000 _send_xprds
+000400f4 l       .text	00000000 _master_send_xreq
+00040154 l       .text	00000000 _xprs_pen_last
+000402b0 l       .text	00000000 _duplicate_load_fail
+000402a8 l       .text	00000000 _addr_out_of_bounds
+00040128 l       .text	00000000 _prepare_for_loading
+000402a4 l       .text	00000000 _invalid_number_of_frames
+00040180 l       .text	00000000 _issue_xprdl
+000402ac l       .text	00000000 _start_unloaded_fail
+00040214 l       .text	00000000 _wait_for_remaining_exchanges
+00040198 l       .text	00000000 _issue_xprdl_continue
+000402b4 l       .text	00000000 _iv_fail0_trailing_not_zero
+000402b8 l       .text	00000000 _iv_fail1_not_code
+000402bc l       .text	00000000 _iv_fail2_bad_tile_number
+000402c0 l       .text	00000000 _iv_fail3_bad_frame_number
+00040200 l       .text	00000000 _issue_last_xprdl
+000401e8 l       .text	00000000 _update_for_next_packet
+000401dc l       .text	00000000 _is_first_pkt
+00040208 l       .text	00000000 _update_xprdl_hdr
+00040224 l       .text	00000000 _clear_unloaded_memory
+00040234 l       .text	00000000 _clear_memory_loop
+00040254 l       .text	00000000 _backup_loop
+00040294 l       .text	00000000 _start_tile_app
+000402c4 l       .text	00000000 _exception
+000402d4 l       .text	00000000 _forever
+00040348 l       .text	00000000 _load_frame_end
+00040358 l       .text	00000000 _cpclr_last_end
+00044000 l       *ABS*	00000000 .hidden __interleave_1_start
+00060000 l       *ABS*	00000000 .hidden __interleave_2_start
+00044000 l       .data	00000000 .hidden __image_end
+00044000 l       .interleave_1_bank_a	00000000 .hidden __interleave_1_end
+00060000 l       .interleave_2_bank_a	00000000 .hidden __interleave_2_end
+00040000 g       .text	00000000 _start
+00080000 g       *ABS*	00000000 _RAM_END
+
+Disassembly of section .text:
+
+00040000 <_start>:
+   40000: 03 00 80 41	sync 3
+
+00040004 <_reg_parity_reset>:
+   40004: 88 03 04 19  	setzi $m0, 263048
+   40008: 00 f0 00 15  	runall $m0, $m15, 0
+   4000c: 02 00 80 41  	sync 2
+   40010: d6 00 01 18  	call $m0, 0x40358 <_cpclr_last_end>
+   40014: 03 00 80 41  	sync 3
+
+00040018 <_bootloader_init>:
+   ; $m0 = $WORKER_BASE
+   40018: 03 00 00 41  	get $m0, 3
+   ; $m1 = $m0 & 0b00111101
+   4001c: 3d 80 01 42  	and $m1, $m0, 61
+   ; $m2 = 1280 + $m1
+   40020: 00 05 20 19  	setzi $m2, 1280
+   40024: 21 10 20 44  	add $m2, $m2, $m1
+   ; $CONTROL_REG[160] = $m2
+   40028: a0 80 20 43  	put 160, $m2
+   4002c: 28 00 a0 40  	delay 40
+   ; $CONTROL_REG[167] = 0x7fbe0
+   40030: e0 fb b7 19  	setzi $m11, 523232
+   40034: a7 80 b0 43  	put 167, $m11
+
+00040038 <_relocate_subroutines>:
+   40038: b7 00 a1 18  	call $m10, 0x402dc <_get_copy_clear_instructions>
+   4003c: 00 00 f1 4f  	st32 $m1, $m15, $m0, 0
+   40040: 01 00 f2 4f  	st32 $m2, $m15, $m0, 1
+   40044: 02 00 f4 4f  	st32 $m4, $m15, $m0, 2
+   40048: 03 00 f5 4f  	st32 $m5, $m15, $m0, 3
+   4004c: 0c 03 14 19  	setzi $m1, 262924
+   40050: 00 80 24 19  	setzi $m2, 294912
+   40054: 0e 00 30 19  	setzi $m3, 14
+   40058: 00 10 a1 18  	call $m10, 0x44000 <__interleave_1_end>
+   4005c: 48 03 14 19  	setzi $m1, 262984
+   40060: 00 fc 27 19  	setzi $m2, 523264
+   40064: 03 00 30 19  	setzi $m3, 3
+   40068: 00 10 a1 18  	call $m10, 0x44000 <__interleave_1_end>
+   4006c: 81 f3 f0 44  	zero	$m8
+
+00040070 <_bootload_begin>:
+   40070: 03 00 00 41  	get $m0, 3
+   40074: 3c b0 03 42  	andc $m3, $m0, 60
+   40078: 04 d0 32 42  	shr $m2, $m3, 4
+   4007c: 03 80 33 42  	and $m3, $m3, 3
+   40080: 21 33 20 44  	or $m2, $m2, $m3
+   40084: 01 d0 23 42  	shr $m3, $m2, 1
+   40088: 3f 80 02 42  	and $m2, $m0, 63
+   4008c: 01 d0 31 42  	shr $m1, $m3, 1
+   40090: 12 00 19 39  	sub $m9, 18, $m1
+   40094: ff ff 4f 19  	setzi $m4, 1048575
+   40098: 0f c0 44 42  	or $m4, $m4, 15728640
+   4009c: ff 3f 50 19  	setzi $m5, 16383
+   400a0: 06 f0 b4 4f  	st32 $m4, $m11, $m15, 6
+   400a4: 07 f0 b5 4f  	st32 $m5, $m11, $m15, 7
+   400a8: df 1f 40 19  	setzi $m4, 8159
+   400ac: 00 cc 44 42  	or $m4, $m4, 3221225472
+   400b0: 0e a0 05 42  	shl $m5, $m0, 14
+   400b4: 41 53 40 44  	or $m4, $m4, $m5
+   400b8: 05 a0 25 42  	shl $m5, $m2, 5
+   400bc: 02 90 55 42  	or $m5, $m5, 2
+   400c0: 04 f0 b4 4f  	st32 $m4, $m11, $m15, 4
+   400c4: 05 f0 b5 4f  	st32 $m5, $m11, $m15, 5
+   400c8: 0e a0 04 42  	shl $m4, $m0, 14
+   400cc: 00 ce 44 42  	or $m4, $m4, 3758096384
+   400d0: e0 1f 44 22  	add $m4, $m4, 8160
+   400d4: 02 f0 b4 4f  	st32 $m4, $m11, $m15, 2
+   400d8: 3b 00 31 13  	brz $m3, 0x400ec <_master_wait>
+
+000400dc <_slave_wait>:
+   400dc: 01 00 c0 40   sans 1
+   400e0: 37 00 19 13   brnzdec $m1, 0x400dc <_slave_wait>
+   400e4: 01 00 80 41   sync 1
+   400e8: 3f 00 81 40   bri 0x400fc <_send_xprds>
+
+000400ec <_master_wait>:
+   400ec: 03 00 80 41   sync 3
+   400f0: 0d 00 80 41   sync 13
+
+000400f4 <_master_send_xreq>:
+   400f4: 33 00 20 78   send 1, 6, 3
+   400f8: 00 00 80 41   sync 0
+
+000400fc <_send_xprds>:
+   400fc: 02 00 00 19  	setzi $m0, 2
+   40100: a6 80 00 43  	put 166, $m0
+   40104: 23 00 20 78  	send 1, 4, 3
+   40108: 00 00 80 41  	sync 0
+   4010c: 00 f0 b0 01  	ld32 $m0, $m11, $m15, 0
+   40110: 01 00 01 22  	add $m1, $m0, 1
+   40114: 55 00 01 13  	brz $m0, 0x40154 <_xprs_pen_last>
+   40118: 55 00 11 13  	brz $m1, 0x40154 <_xprs_pen_last>
+   4011c: ac 00 81 11  	brnz $m8, 0x402b0 <_duplicate_load_fail>
+   40120: 1b d0 01 42  	shr $m1, $m0, 27
+   40124: aa 00 11 11  	brnz $m1, 0x402a8 <_addr_out_of_bounds>
+
+00040128 <_prepare_for_loading>:
+   40128: 02 d0 01 42  	shr $m1, $m0, 2
+   4012c: 03 f0 b1 4f  	st32 $m1, $m11, $m15, 3
+   40130: 01 f0 b1 01  	ld32 $m1, $m11, $m15, 1
+   40134: 07 01 17 33  	min $m7, $m1, 263
+   40138: 11 00 77 30  	max $m7, $m7, 17
+   4013c: 11 77 10 44  	xor $m1, $m1, $m7
+   40140: a9 00 11 11  	brnz $m1, 0x402a4 <_invalid_number_of_frames>
+   40144: 00 fc 87 19  	setzi $m8, 523264
+   40148: 61 f3 f0 44  	zero	$m6
+   4014c: ff ff 77 22  	add $m7, $m7, -1
+   40150: 60 00 81 40  	bri 0x40180 <_issue_xprdl>
+
+00040154 <_xprs_pen_last>:
+   40154: 00 90 07 42  	mov	$m7, $m0
+   40158: 01 83 10 44  	or $m0, $m1, $m8
+   4015c: ab 00 01 13  	brz $m0, 0x402ac <_start_unloaded_fail>
+   40160: 04 f0 b0 01  	ld32 $m0, $m11, $m15, 4
+   40164: c0 c0 00 42  	or $m0, $m0, 201326592
+   40168: 04 f0 b0 4f  	st32 $m0, $m11, $m15, 4
+   4016c: 02 00 00 19  	setzi $m0, 2
+   40170: a6 80 00 43  	put 166, $m0
+   40174: 23 00 20 78  	send 1, 4, 3
+   40178: 00 00 80 41  	sync 0
+   4017c: 85 00 81 40  	bri 0x40214 <_wait_for_remaining_exchanges>
+
+00040180 <_issue_xprdl>:
+   40180: 00 01 00 19  	setzi $m0, 256
+   40184: a6 80 00 43  	put 166, $m0
+   40188: 98 01 a4 19  	setzi $m10, 262552
+   4018c: 11 00 60 2a  	cmpult $m0, $m6, 17
+   40190: c3 00 01 13  	brz $m0, 0x4030c <_load_frame>
+   40194: 00 20 81 40  	bri 0x48000 <__interleave_1_end+0x4000>
+
+00040198 <_issue_xprdl_continue>:
+   40198: ad 00 31 11  	brnz $m3, 0x402b4 <_iv_fail0_trailing_not_zero>
+   4019c: 1c d0 24 42  	shr $m4, $m2, 28
+   401a0: 00 00 44 28  	cmpeq $m4, $m4, 0
+   401a4: ae 00 41 13  	brz $m4, 0x402b8 <_iv_fail1_not_code>
+   401a8: 03 00 04 41  	get $m4, 3
+   401ac: 33 f5 10 44  	sort4x16lo $m3, $m1, $m15
+   401b0: 42 41 30 44  	cmpeq $m4, $m3, $m4
+   401b4: af 00 41 13  	brz $m4, 0x402bc <_iv_fail2_bad_tile_number>
+   401b8: 41 67 00 44  	xor $m4, $m0, $m6
+   401bc: b0 00 41 11  	brnz $m4, 0x402c0 <_iv_fail3_bad_frame_number>
+   401c0: 85 00 71 13  	brz $m7, 0x40214 <_wait_for_remaining_exchanges>
+   401c4: 02 f0 b4 01  	ld32 $m4, $m11, $m15, 2
+   401c8: 03 f0 b5 01  	ld32 $m5, $m11, $m15, 3
+   401cc: 1b d0 23 42  	shr $m3, $m2, 27
+   401d0: 01 80 33 42  	and $m3, $m3, 1
+   401d4: 80 00 31 11  	brnz $m3, 0x40200 <_issue_last_xprdl>
+   401d8: 7a 00 61 11  	brnz $m6, 0x401e8 <_update_for_next_packet>
+
+000401dc <_is_first_pkt>:
+   401dc: 00 00 84 19  	setzi $m8, 262144
+   401e0: ff 1f 00 19  	setzi $m0, 8191
+   401e4: 40 01 40 44  	andc $m4, $m4, $m0
+
+000401e8 <_update_for_next_packet>:
+   401e8: e0 03 88 22  	add $m8, $m8, 992
+   401ec: 01 00 66 22  	add $m6, $m6, 1
+   401f0: ff ff 77 22  	add $m7, $m7, -1
+   401f4: 1f 00 44 22  	add $m4, $m4, 31
+   401f8: 00 01 55 22  	add $m5, $m5, 256
+   401fc: 82 00 71 11  	brnz $m7, 0x40208 <_update_xprdl_hdr>
+
+00040200 <_issue_last_xprdl>:
+   40200: 71 f3 f0 44  	zero	$m7
+   40204: c0 c0 44 42  	or $m4, $m4, 201326592
+
+00040208 <_update_xprdl_hdr>:
+   40208: 02 f0 b4 4f  	st32 $m4, $m11, $m15, 2
+   4020c: 03 f0 b5 4f  	st32 $m5, $m11, $m15, 3
+   40210: 60 00 81 40  	bri 0x40180 <_issue_xprdl>
+
+00040214 <_wait_for_remaining_exchanges>:
+   40214: 03 00 80 41   sync 3
+   40218: 05 00 80 41   sync 5
+   4021c: 85 00 99 13   brnzdec $m9, 0x40214 <_wait_for_remaining_exchanges>
+   40220: 1c 00 71 13   brz $m7, 0x40070 <_bootload_begin>
+
+00040224 <_clear_unloaded_memory>:
+   40224: fc fb 47 19  	setzi $m4, 523260
+   40228: f0 03 88 22  	add $m8, $m8, 1008
+   4022c: 42 46 80 44  	sub $m4, $m4, $m8
+   40230: 02 d0 44 42  	shr $m4, $m4, 2
+
+00040234 <_clear_memory_loop>:
+   40234: 01 80 ff 4e  	st32step $m15, $m15, $m8+=, 1
+   40238: 8d 00 49 13  	brnzdec $m4, 0x40234 <_clear_memory_loop>
+   4023c: fc 80 ff 4f  	st32 $m15, $m15, $m8, 252
+   40240: fd 80 ff 4f  	st32 $m15, $m15, $m8, 253
+   40244: fe 80 ff 4f  	st32 $m15, $m15, $m8, 254
+   40248: ff 80 ff 4f  	st32 $m15, $m15, $m8, 255
+   4024c: b7 00 a1 18  	call $m10, 0x402dc <_get_copy_clear_instructions>
+   40250: 07 00 90 19  	setzi $m9, 7
+
+00040254 <_backup_loop>:
+   40254: 80 f0 09 4d  	ld32 $m8, $m0, $m15, $m9
+   40258: 00 90 b8 4c  	stm32 $m8, $m11, $m9
+   4025c: 95 00 99 13  	brnzdec $m9, 0x40254 <_backup_loop>
+   40260: 00 00 f1 4f  	st32 $m1, $m15, $m0, 0
+   40264: 01 00 f2 4f  	st32 $m2, $m15, $m0, 1
+   40268: 02 00 f3 4f  	st32 $m3, $m15, $m0, 2
+   4026c: 03 00 f4 4f  	st32 $m4, $m15, $m0, 3
+   40270: 04 00 f5 4f  	st32 $m5, $m15, $m0, 4
+   40274: 00 fc 17 19  	setzi $m1, 523264
+   40278: 00 00 24 19  	setzi $m2, 262144
+   4027c: fb 00 30 19  	setzi $m3, 251
+   40280: 00 00 a4 19  	setzi $m10, 262144
+   40284: 00 90 b4 42  	mov	$m4, $m11
+   40288: 00 40 54 19  	setzi $m5, 278528
+   4028c: 07 00 60 19  	setzi $m6, 7
+   40290: 04 00 80 41  	sync 4
+
+00040294 <_start_tile_app>:
+   40294: 07 00 00 19  	setzi $m0, 7
+   40298: a9 80 00 43  	put 169, $m0
+   4029c: a7 80 f0 43  	put 167, $m15
+   402a0: 00 10 81 40  	bri 0x44000 <__interleave_1_end>
+
+000402a4 <_invalid_number_of_frames>:
+   402a4: b1 00 a1 18  	call $m10, 0x402c4 <_exception>
+
+000402a8 <_addr_out_of_bounds>:
+   402a8: b1 00 a1 18  	call $m10, 0x402c4 <_exception>
+
+000402ac <_start_unloaded_fail>:
+   402ac: b1 00 a1 18  	call $m10, 0x402c4 <_exception>
+
+000402b0 <_duplicate_load_fail>:
+   402b0: b1 00 a1 18  	call $m10, 0x402c4 <_exception>
+
+000402b4 <_iv_fail0_trailing_not_zero>:
+   402b4: b1 00 a1 18  	call $m10, 0x402c4 <_exception>
+
+000402b8 <_iv_fail1_not_code>:
+   402b8: b1 00 a1 18  	call $m10, 0x402c4 <_exception>
+
+000402bc <_iv_fail2_bad_tile_number>:
+   402bc: b1 00 a1 18  	call $m10, 0x402c4 <_exception>
+
+000402c0 <_iv_fail3_bad_frame_number>:
+   402c0: b1 00 a1 18  	call $m10, 0x402c4 <_exception>
+
+000402c4 <_exception>:
+   402c4: 01 00 00 19  	setzi $m0, 1
+   402c8: a9 80 00 43  	put 169, $m0
+   402cc: 00 00 00 19  	setzi $m0, 0
+   402d0: fc ff a1 22  	add $m1, $m10, -4
+
+000402d4 <_forever>:
+   402d4: 01 10 80 41  	trap 1
+   402d8: b5 00 81 40  	bri 0x402d4 <_forever>
+
+000402dc <_get_copy_clear_instructions>:
+   402dc: 00 40 04 19  	setzi $m0, 278528
+   402e0: 00 f0 13 19  	setzi $m1, 258048
+   402e4: d1 c4 11 42  	or $m1, $m1, 1292894208
+   402e8: 00 30 20 19  	setzi $m2, 12288
+   402ec: c2 c4 22 42  	or $m2, $m2, 1277165568
+   402f0: 00 30 3f 19  	setzi $m3, 995328
+   402f4: c1 c4 33 42  	or $m3, $m3, 1276116992
+   402f8: 00 10 49 19  	setzi $m4, 593920
+   402fc: 33 c1 44 42  	or $m4, $m4, 321912832
+   40300: 00 00 50 19  	setzi $m5, 0
+   40304: 3a c4 55 42  	or $m5, $m5, 1134559232
+   40308: 00 00 a0 43  	br $m10
+
+0004030c <_load_frame>:
+   4030c: 00 80 f1 01  	ld32 $m1, $m15, $m8, 0
+   40310: 01 80 f2 01  	ld32 $m2, $m15, $m8, 1
+   40314: 02 80 f3 01  	ld32 $m3, $m15, $m8, 2
+   40318: 03 80 f4 01  	ld32 $m4, $m15, $m8, 3
+   4031c: 13 00 20 78  	send 1, 2, 3
+   40320: 00 00 80 41  	sync 0
+   40324: 00 80 f0 01  	ld32 $m0, $m15, $m8, 0
+   40328: 00 80 f1 4f  	st32 $m1, $m15, $m8, 0
+   4032c: 01 80 f1 01  	ld32 $m1, $m15, $m8, 1
+   40330: 01 80 f2 4f  	st32 $m2, $m15, $m8, 1
+   40334: 02 80 f2 01  	ld32 $m2, $m15, $m8, 2
+   40338: 02 80 f3 4f  	st32 $m3, $m15, $m8, 2
+   4033c: 03 80 f3 01  	ld32 $m3, $m15, $m8, 3
+   40340: 03 80 f4 4f  	st32 $m4, $m15, $m8, 3
+   40344: 00 00 a0 43  	br $m10
+
+00040348 <_load_frame_end>:
+   40348: 00 f0 46 4d  	ld32 $m0, $m4, $m15, $m6
+   4034c: 00 60 50 4c  	stm32 $m0, $m5, $m6
+   40350: 00 60 4f 4c  	stm32 $m15, $m4, $m6
+   40354: 00 00 69 13  	brnzdec $m6, 0x40000 <_start>
+
+00040358 <_cpclr_last_end>:
+   40358: 11 f3 f0 44  	zero	$m1
+   4035c: 21 f3 f0 44  	zero	$m2
+   40360: 31 f3 f0 44  	zero	$m3
+   40364: 41 f3 f0 44  	zero	$m4
+   40368: 51 f3 f0 44  	zero	$m5
+   4036c: 61 f3 f0 44  	zero	$m6
+   40370: 71 f3 f0 44  	zero	$m7
+   40374: 81 f3 f0 44  	zero	$m8
+   40378: 91 f3 f0 44  	zero	$m9
+   4037c: a1 f3 f0 44  	zero	$m10
+   40380: b1 f3 f0 44  	zero	$m11
+   40384: 00 00 00 43  	br $m0
+
+00040388 <_worker_clear_mrf_arf>:
+   40388: d6 00 01 18  	call $m0, 0x40358 <_cpclr_last_end>
+   4038c: 00 fe f0 58  	zero	$a0
+   40390: 10 fe f0 58  	zero	$a1
+   40394: 20 fe f0 58  	zero	$a2
+   40398: 30 fe f0 58  	zero	$a3
+   4039c: 40 fe f0 58  	zero	$a4
+   403a0: 50 fe f0 58  	zero	$a5
+   403a4: 60 fe f0 58  	zero	$a6
+   403a8: 70 fe f0 58  	zero	$a7
+   403ac: 00 40 f0 43  	exitz $m15
