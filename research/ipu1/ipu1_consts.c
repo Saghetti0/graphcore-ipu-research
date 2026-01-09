@@ -48,6 +48,7 @@ const uint32_t TEXCPT_ENUM_BITWIDTH = 0x4;
 const uint32_t CTXT_WORKERS = 0x6;
 const uint32_t CTXT_TOTAL = 0x7;
 const uint32_t CTXT_TOTAL_BITWIDTH = 0x3;
+
 const uint32_t TMEM_MESONS_PER_ATOM = 0x2;
 const uint32_t TMEM_MESON_DATA_SIZE = 0x20;
 const uint32_t TMEM_MESON_PARITY_SIZE = 0x1;
@@ -78,14 +79,18 @@ const uint32_t TMEM_REGION0_INTERLEAVE_FACTOR = 0x1;
 const uint32_t TMEM_REGION1_INTERLEAVE_FACTOR = 0x2;
 const uint32_t TMEM_REGION0_EFFCTV_ELEMSIZE = 0x10;
 const uint32_t TMEM_REGION1_EFFCTV_ELEMSIZE = 0x20;
+
 const uint32_t MAX_NUM_LOAD_STORES_PER_INSN = 0x3;
 const uint32_t TRF_ACCESS_SIZE_MAX = 0x4;
 const uint32_t TREG_UPPER_CSR_SPACE_BASE = 0x100;
+
 const uint32_t MRF_CAPACITY = 0x10;
 const uint32_t MRF_GP_REGISTERS = 0xc;
+
 const uint32_t ARF_CAPACITY = 0x10;
 const uint32_t ARF_GP_REGISTERS = 0x8;
 const uint32_t ARF_MAX_ACCESS_SIZE = 0x4;
+
 const uint32_t TDBG_IBRK_CHANNELS = 0x1;
 const uint32_t TDBG_IBRK_IDBASE = 0x0;
 const uint32_t TDBG_DBRK_CHANNELS = 0x1;
@@ -95,6 +100,7 @@ const uint32_t TDBG_TOTAL_CHANNELS = 0x2;
 const uint32_t TDBG_TOTAL_CHANNELS_CEIL_LOG2 = 0x1;
 const uint32_t TDBG_TDI_REGISTER_WIDTH = 0x4;
 const uint32_t TDBG_TDI_APERTURE_SPACE = 0x10;
+
 const uint32_t TEXCH_SENDOFF_INTERNAL_COUNT_LIMIT = 0x40;
 const uint32_t TEXCH_MAX_XTWR_RX_PAYLOAD_LEN = 0x40;
 const uint32_t TEXCH_NUM_XBS = 0x10;
@@ -117,8 +123,10 @@ const uint32_t TEXCH_SYNCZONE_GS2 = 0x6;
 const uint32_t TEXCH_SYNCZONE_GS2_MSR = 0xe;
 const uint32_t TEXCH_SYNCZONE_GS2H = 0x7;
 const uint32_t TEXCH_SYNCZONE_GS2H_MSR = 0xf;
+
 const uint32_t TILE_INCOMING_MUX__RESET0 = 0x500;
 const uint32_t TEXCH_MUXPAIRWRITEDLY = 0x1;
+
 const uint32_t BNET_TILEID__SUBID__SHIFT = 0x0;
 const uint32_t BNET_TILEID__SUBID__SIZE = 0x2;
 const uint32_t BNET_TILEID__COLID__SHIFT = 0x2;
@@ -144,12 +152,15 @@ const uint32_t BNET_ERUN2RCV = 0x7;
 const int32_t BNET_SACK_DELAY_NORM_ADD = -0x5;
 const uint32_t BNET_RSAK_MAX = 0x36;
 const uint32_t BNET_SCTRL_DELAY = 0x0;
+
 const uint32_t TEXCH_TLINK_PUT_IMUX_EXCEPTION = 0x0;
 const uint32_t TEXCH_TLINK_MAX_PAYLOAD_BYTES = 0x400;
+
 const uint32_t CSR_C_PC__INDEX = 0x0;
 const uint32_t CSR_C_PC__ADDR__SHIFT = 0x2;
 const uint32_t CSR_C_PC__ADDR__SIZE = 0x11;
 const uint32_t CSR_C_PC__ADDR__MASK = 0x1ffff;
+
 const uint32_t CSR_C_DBG_DATA__INDEX = 0x70;
 const uint32_t CSR_C_DBG_DATA__VALUE__SHIFT = 0x0;
 const uint32_t CSR_C_DBG_DATA__VALUE__SIZE = 0x20;
@@ -158,6 +169,7 @@ const uint32_t CSR_C_DBG_BRK_ID__INDEX = 0x71;
 const uint32_t CSR_C_DBG_BRK_ID__CHAN_ID__SHIFT = 0x0;
 const uint32_t CSR_C_DBG_BRK_ID__CHAN_ID__SIZE = 0x1;
 const uint32_t CSR_C_DBG_BRK_ID__CHAN_ID__MASK = 0x1;
+
 const uint32_t CSR_S_SSR__INDEX = 0x1;
 const uint32_t CSR_S_SSR__LC__SHIFT = 0x0;
 const uint32_t CSR_S_SSR__LC__SIZE = 0x1;
@@ -177,6 +189,7 @@ const uint32_t CSR_S_SSR__ETYPE__MASK = 0xf;
 const uint32_t CSR_S_SSR__PERR__SHIFT = 0x9;
 const uint32_t CSR_S_SSR__PERR__SIZE = 0x1;
 const uint32_t CSR_S_SSR__PERR__MASK = 0x1;
+
 const uint32_t CSR_S_CR__INDEX = 0x2;
 const uint32_t CSR_S_CR__LC_CLR__SHIFT = 0x0;
 const uint32_t CSR_S_CR__LC_CLR__SIZE = 0x1;
@@ -187,10 +200,12 @@ const uint32_t CSR_S_CR__LC_SET__MASK = 0x1;
 const uint32_t CSR_S_CR__ZCWEI__SHIFT = 0x2;
 const uint32_t CSR_S_CR__ZCWEI__SIZE = 0x1;
 const uint32_t CSR_S_CR__ZCWEI__MASK = 0x1;
+
 const uint32_t CSR_S_TILE_ID__INDEX = 0x3;
 const uint32_t CSR_S_TILE_ID__TILE_ID__SHIFT = 0x0;
 const uint32_t CSR_S_TILE_ID__TILE_ID__SIZE = 0xb;
 const uint32_t CSR_S_TILE_ID__TILE_ID__MASK = 0x7ff;
+
 const uint32_t CSR_S_FP_ICTL__INDEX = 0x20;
 const uint32_t CSR_S_FP_ICTL__INV__SHIFT = 0x0;
 const uint32_t CSR_S_FP_ICTL__INV__SIZE = 0x1;
@@ -210,34 +225,42 @@ const uint32_t CSR_S_FP_ICTL__ESR__MASK = 0x1;
 const uint32_t CSR_S_FP_ICTL__NANOO__SHIFT = 0x14;
 const uint32_t CSR_S_FP_ICTL__NANOO__SIZE = 0x1;
 const uint32_t CSR_S_FP_ICTL__NANOO__MASK = 0x1;
+
 const uint32_t CSR_S_WORKER0_BASE__INDEX = 0x21;
 const uint32_t CSR_S_WORKER0_BASE__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_WORKER0_BASE__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_WORKER0_BASE__ADDR__MASK = 0x7ffff;
+
 const uint32_t CSR_S_WORKER1_BASE__INDEX = 0x22;
 const uint32_t CSR_S_WORKER1_BASE__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_WORKER1_BASE__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_WORKER1_BASE__ADDR__MASK = 0x7ffff;
+
 const uint32_t CSR_S_WORKER2_BASE__INDEX = 0x23;
 const uint32_t CSR_S_WORKER2_BASE__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_WORKER2_BASE__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_WORKER2_BASE__ADDR__MASK = 0x7ffff;
+
 const uint32_t CSR_S_WORKER3_BASE__INDEX = 0x24;
 const uint32_t CSR_S_WORKER3_BASE__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_WORKER3_BASE__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_WORKER3_BASE__ADDR__MASK = 0x7ffff;
+
 const uint32_t CSR_S_WORKER4_BASE__INDEX = 0x25;
 const uint32_t CSR_S_WORKER4_BASE__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_WORKER4_BASE__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_WORKER4_BASE__ADDR__MASK = 0x7ffff;
+
 const uint32_t CSR_S_WORKER5_BASE__INDEX = 0x26;
 const uint32_t CSR_S_WORKER5_BASE__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_WORKER5_BASE__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_WORKER5_BASE__ADDR__MASK = 0x7ffff;
+
 const uint32_t CSR_S_CCCSLOAD__INDEX = 0x50;
 const uint32_t CSR_S_CCCSLOAD__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_CCCSLOAD__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_CCCSLOAD__ADDR__MASK = 0x7ffff;
+
 const uint32_t CSR_S_SCOUNT_L__INDEX = 0x60;
 const uint32_t CSR_S_SCOUNT_L__VALUE__SHIFT = 0x0;
 const uint32_t CSR_S_SCOUNT_L__VALUE__SIZE = 0x20;
@@ -246,6 +269,7 @@ const uint32_t CSR_S_SCOUNT_U__INDEX = 0x61;
 const uint32_t CSR_S_SCOUNT_U__VALUE__SHIFT = 0x0;
 const uint32_t CSR_S_SCOUNT_U__VALUE__SIZE = 0x20;
 const uint32_t CSR_S_SCOUNT_U__VALUE__MASK = 0xffffffff;
+
 const uint32_t CSR_S_CTXT_STS__INDEX = 0x72;
 const uint32_t CSR_S_CTXT_STS__SU__SHIFT = 0x0;
 const uint32_t CSR_S_CTXT_STS__SU__SIZE = 0x2;
@@ -277,6 +301,7 @@ const uint32_t CSR_S_CTXT_STS__EERR__MASK = 0x1;
 const uint32_t CSR_S_CTXT_STS__MERR__SHIFT = 0x1f;
 const uint32_t CSR_S_CTXT_STS__MERR__SIZE = 0x1;
 const uint32_t CSR_S_CTXT_STS__MERR__MASK = 0x1;
+
 const uint32_t CSR_S_DBG_CTL__INDEX = 0x73;
 const uint32_t CSR_S_DBG_CTL__CHAN_EN__SHIFT = 0x0;
 const uint32_t CSR_S_DBG_CTL__CHAN_EN__SIZE = 0x2;
@@ -340,42 +365,52 @@ const uint32_t CSR_S_DBG_DBRK0_SIDA__INDEX = 0x92;
 const uint32_t CSR_S_DBG_DBRK0_SIDA__VALUE__SHIFT = 0x0;
 const uint32_t CSR_S_DBG_DBRK0_SIDA__VALUE__SIZE = 0x13;
 const uint32_t CSR_S_DBG_DBRK0_SIDA__VALUE__MASK = 0x7ffff;
+
 const uint32_t CSR_S_INCOMING_MUX__INDEX = 0xa0;
 const uint32_t CSR_S_INCOMING_MUX__TILE_ID__SHIFT = 0x0;
 const uint32_t CSR_S_INCOMING_MUX__TILE_ID__SIZE = 0xb;
 const uint32_t CSR_S_INCOMING_MUX__TILE_ID__MASK = 0x7ff;
+
 const uint32_t CSR_S_INCOMING_MUXPAIR__INDEX = 0xa1;
 const uint32_t CSR_S_INCOMING_MUXPAIR__TILE_ID__SHIFT = 0x0;
 const uint32_t CSR_S_INCOMING_MUXPAIR__TILE_ID__SIZE = 0xb;
 const uint32_t CSR_S_INCOMING_MUXPAIR__TILE_ID__MASK = 0x7ff;
+
 const uint32_t CSR_S_INCOMING_DELTA__INDEX = 0xa2;
 const uint32_t CSR_S_INCOMING_DELTA__ADDR__SHIFT = 0x2;
 const uint32_t CSR_S_INCOMING_DELTA__ADDR__SIZE = 0x11;
 const uint32_t CSR_S_INCOMING_DELTA__ADDR__MASK = 0x1ffff;
+
 const uint32_t CSR_S_INCOMING_FORMAT__INDEX = 0xa3;
 const uint32_t CSR_S_INCOMING_FORMAT__VALUE__SHIFT = 0x0;
 const uint32_t CSR_S_INCOMING_FORMAT__VALUE__SIZE = 0x2;
 const uint32_t CSR_S_INCOMING_FORMAT__VALUE__MASK = 0x3;
+
 const uint32_t CSR_S_INCOMING_BASE__INDEX = 0xa4;
 const uint32_t CSR_S_INCOMING_BASE__ADDR__SHIFT = 0x2;
 const uint32_t CSR_S_INCOMING_BASE__ADDR__SIZE = 0x11;
 const uint32_t CSR_S_INCOMING_BASE__ADDR__MASK = 0x1ffff;
+
 const uint32_t CSR_S_INCOMING_SINIT__INDEX = 0xa5;
 const uint32_t CSR_S_INCOMING_SINIT__ADDR__SHIFT = 0x2;
 const uint32_t CSR_S_INCOMING_SINIT__ADDR__SIZE = 0x11;
 const uint32_t CSR_S_INCOMING_SINIT__ADDR__MASK = 0x1ffff;
+
 const uint32_t CSR_S_INCOMING_DCOUNT__INDEX = 0xa6;
 const uint32_t CSR_S_INCOMING_DCOUNT__VALUE__SHIFT = 0x0;
 const uint32_t CSR_S_INCOMING_DCOUNT__VALUE__SIZE = 0x11;
 const uint32_t CSR_S_INCOMING_DCOUNT__VALUE__MASK = 0x1ffff;
+
 const uint32_t CSR_S_OUTGOING_BASE__INDEX = 0xa7;
 const uint32_t CSR_S_OUTGOING_BASE__ADDR__SHIFT = 0x2;
 const uint32_t CSR_S_OUTGOING_BASE__ADDR__SIZE = 0x11;
 const uint32_t CSR_S_OUTGOING_BASE__ADDR__MASK = 0x1ffff;
+
 const uint32_t CSR_S_OUTGOING_DELTA__INDEX = 0xa8;
 const uint32_t CSR_S_OUTGOING_DELTA__ADDR__SHIFT = 0x2;
 const uint32_t CSR_S_OUTGOING_DELTA__ADDR__SIZE = 0x11;
 const uint32_t CSR_S_OUTGOING_DELTA__ADDR__MASK = 0x1ffff;
+
 const uint32_t CSR_S_EXCHANGE_CTL__INDEX = 0xa9;
 const uint32_t CSR_S_EXCHANGE_CTL__ACTV__SHIFT = 0x0;
 const uint32_t CSR_S_EXCHANGE_CTL__ACTV__SIZE = 0x1;
@@ -392,10 +427,12 @@ const uint32_t CSR_S_EXCHANGE_CTL__S64__MASK = 0x1;
 const uint32_t CSR_S_EXCHANGE_CTL__ATMC__SHIFT = 0x4;
 const uint32_t CSR_S_EXCHANGE_CTL__ATMC__SIZE = 0x1;
 const uint32_t CSR_S_EXCHANGE_CTL__ATMC__MASK = 0x1;
+
 const uint32_t CSR_S_ANS_DCOUNT__INDEX = 0xaa;
 const uint32_t CSR_S_ANS_DCOUNT__VALUE__SHIFT = 0x0;
 const uint32_t CSR_S_ANS_DCOUNT__VALUE__SIZE = 0x13;
 const uint32_t CSR_S_ANS_DCOUNT__VALUE__MASK = 0x7ffff;
+
 const uint32_t CSR_S_EXCHANGE_ADJ__INDEX = 0xab;
 const uint32_t CSR_S_EXCHANGE_ADJ__COFF__SHIFT = 0x0;
 const uint32_t CSR_S_EXCHANGE_ADJ__COFF__SIZE = 0x4;
@@ -403,6 +440,7 @@ const uint32_t CSR_S_EXCHANGE_ADJ__COFF__MASK = 0xf;
 const uint32_t CSR_S_EXCHANGE_ADJ__SEWS__SHIFT = 0x4;
 const uint32_t CSR_S_EXCHANGE_ADJ__SEWS__SIZE = 0x1;
 const uint32_t CSR_S_EXCHANGE_ADJ__SEWS__MASK = 0x1;
+
 const uint32_t CSR_W_WSR__INDEX = 0x1;
 const uint32_t CSR_W_WSR__CTXTID_M1__SHIFT = 0x0;
 const uint32_t CSR_W_WSR__CTXTID_M1__SIZE = 0x3;
@@ -413,34 +451,42 @@ const uint32_t CSR_W_WSR__ETYPE__MASK = 0xf;
 const uint32_t CSR_W_WSR__ERPT__SHIFT = 0x9;
 const uint32_t CSR_W_WSR__ERPT__SIZE = 0x1;
 const uint32_t CSR_W_WSR__ERPT__MASK = 0x1;
+
 const uint32_t CSR_W_VERTEX_BASE__INDEX = 0x2;
 const uint32_t CSR_W_VERTEX_BASE__ADDR__SHIFT = 0x2;
 const uint32_t CSR_W_VERTEX_BASE__ADDR__SIZE = 0x11;
 const uint32_t CSR_W_VERTEX_BASE__ADDR__MASK = 0x1ffff;
+
 const uint32_t CSR_W_WORKER_BASE__INDEX = 0x3;
 const uint32_t CSR_W_WORKER_BASE__ADDR__SHIFT = 0x0;
 const uint32_t CSR_W_WORKER_BASE__ADDR__SIZE = 0x13;
 const uint32_t CSR_W_WORKER_BASE__ADDR__MASK = 0x7ffff;
+
 const uint32_t CSR_W_REPEAT_COUNT__INDEX = 0x4;
 const uint32_t CSR_W_REPEAT_COUNT__VALUE__SHIFT = 0x0;
 const uint32_t CSR_W_REPEAT_COUNT__VALUE__SIZE = 0xc;
 const uint32_t CSR_W_REPEAT_COUNT__VALUE__MASK = 0xfff;
+
 const uint32_t CSR_W_REPEAT_FIRST__INDEX = 0x5;
 const uint32_t CSR_W_REPEAT_FIRST__ADDR__SHIFT = 0x3;
 const uint32_t CSR_W_REPEAT_FIRST__ADDR__SIZE = 0x10;
 const uint32_t CSR_W_REPEAT_FIRST__ADDR__MASK = 0xffff;
+
 const uint32_t CSR_W_REPEAT_END__INDEX = 0x6;
 const uint32_t CSR_W_REPEAT_END__ADDR__SHIFT = 0x3;
 const uint32_t CSR_W_REPEAT_END__ADDR__SIZE = 0x10;
 const uint32_t CSR_W_REPEAT_END__ADDR__MASK = 0xffff;
+
 const uint32_t CSR_W_COUNT_L__INDEX = 0x60;
 const uint32_t CSR_W_COUNT_L__VALUE__SHIFT = 0x0;
 const uint32_t CSR_W_COUNT_L__VALUE__SIZE = 0x20;
 const uint32_t CSR_W_COUNT_L__VALUE__MASK = 0xffffffff;
+
 const uint32_t CSR_W_COUNT_U__INDEX = 0x61;
 const uint32_t CSR_W_COUNT_U__VALUE__SHIFT = 0x0;
 const uint32_t CSR_W_COUNT_U__VALUE__SIZE = 0x20;
 const uint32_t CSR_W_COUNT_U__VALUE__MASK = 0xffffffff;
+
 const uint32_t CSR_W_FP_STS__INDEX = 0x100;
 const uint32_t CSR_W_FP_STS__INV__SHIFT = 0x0;
 const uint32_t CSR_W_FP_STS__INV__SIZE = 0x1;
@@ -483,26 +529,32 @@ const uint32_t CSR_W_FP_CTL__ESR__MASK = 0x1;
 const uint32_t CSR_W_FP_CTL__NANOO__SHIFT = 0x14;
 const uint32_t CSR_W_FP_CTL__NANOO__SIZE = 0x1;
 const uint32_t CSR_W_FP_CTL__NANOO__MASK = 0x1;
+
 const uint32_t CSR_W_PRNG_0_0__INDEX = 0x103;
 const uint32_t CSR_W_PRNG_0_0__VALUE__SHIFT = 0x0;
 const uint32_t CSR_W_PRNG_0_0__VALUE__SIZE = 0x20;
 const uint32_t CSR_W_PRNG_0_0__VALUE__MASK = 0xffffffff;
+
 const uint32_t CSR_W_PRNG_0_1__INDEX = 0x104;
 const uint32_t CSR_W_PRNG_0_1__VALUE__SHIFT = 0x0;
 const uint32_t CSR_W_PRNG_0_1__VALUE__SIZE = 0x20;
 const uint32_t CSR_W_PRNG_0_1__VALUE__MASK = 0xffffffff;
+
 const uint32_t CSR_W_PRNG_1_0__INDEX = 0x105;
 const uint32_t CSR_W_PRNG_1_0__VALUE__SHIFT = 0x0;
 const uint32_t CSR_W_PRNG_1_0__VALUE__SIZE = 0x20;
 const uint32_t CSR_W_PRNG_1_0__VALUE__MASK = 0xffffffff;
+
 const uint32_t CSR_W_PRNG_1_1__INDEX = 0x106;
 const uint32_t CSR_W_PRNG_1_1__VALUE__SHIFT = 0x0;
 const uint32_t CSR_W_PRNG_1_1__VALUE__SIZE = 0x20;
 const uint32_t CSR_W_PRNG_1_1__VALUE__MASK = 0xffffffff;
+
 const uint32_t CSR_W_PRNG_SEED__INDEX = 0x107;
 const uint32_t CSR_W_PRNG_SEED__VALUE__SHIFT = 0x0;
 const uint32_t CSR_W_PRNG_SEED__VALUE__SIZE = 0x20;
 const uint32_t CSR_W_PRNG_SEED__VALUE__MASK = 0xffffffff;
+
 const uint32_t CSR_W_TAS__INDEX = 0x108;
 const uint32_t CSR_W_TAS__F16_0__SHIFT = 0x0;
 const uint32_t CSR_W_TAS__F16_0__SIZE = 0x10;
@@ -510,6 +562,7 @@ const uint32_t CSR_W_TAS__F16_0__MASK = 0xffff;
 const uint32_t CSR_W_TAS__F16_16__SHIFT = 0x10;
 const uint32_t CSR_W_TAS__F16_16__SIZE = 0x10;
 const uint32_t CSR_W_TAS__F16_16__MASK = 0xffff;
+
 const uint32_t TDI_CTXT_STS__INDEX = 0x0;
 const uint32_t TDI_CTXT_STS__SU__SHIFT = 0x0;
 const uint32_t TDI_CTXT_STS__SU__SIZE = 0x2;
@@ -541,6 +594,7 @@ const uint32_t TDI_CTXT_STS__EERR__MASK = 0x1;
 const uint32_t TDI_CTXT_STS__MERR__SHIFT = 0x1f;
 const uint32_t TDI_CTXT_STS__MERR__SIZE = 0x1;
 const uint32_t TDI_CTXT_STS__MERR__MASK = 0x1;
+
 const uint32_t TDI_DBG_RBRK__INDEX = 0x1;
 const uint32_t TDI_DBG_RBRK__EN__SHIFT = 0x0;
 const uint32_t TDI_DBG_RBRK__EN__SIZE = 0x7;
@@ -581,6 +635,7 @@ const uint32_t TDI_DBG_DATA__INDEX = 0x7;
 const uint32_t TDI_DBG_DATA__VALUE__SHIFT = 0x0;
 const uint32_t TDI_DBG_DATA__VALUE__SIZE = 0x20;
 const uint32_t TDI_DBG_DATA__VALUE__MASK = 0xffffffff;
+
 const uint32_t TDI_TDI_STS__INDEX = 0x8;
 const uint32_t TDI_TDI_STS__CNQ__SHIFT = 0x0;
 const uint32_t TDI_TDI_STS__CNQ__SIZE = 0x1;
@@ -604,10 +659,12 @@ const uint32_t TDI_TDI_CLR__INV__MASK = 0x1;
 const uint32_t TDI_TDI_CLR__DBLE__SHIFT = 0x2;
 const uint32_t TDI_TDI_CLR__DBLE__SIZE = 0x1;
 const uint32_t TDI_TDI_CLR__DBLE__MASK = 0x1;
+
 const uint32_t TDI_INCOMING_DCOUNT__INDEX = 0xa;
 const uint32_t TDI_INCOMING_DCOUNT__VALUE__SHIFT = 0x0;
 const uint32_t TDI_INCOMING_DCOUNT__VALUE__SIZE = 0x11;
 const uint32_t TDI_INCOMING_DCOUNT__VALUE__MASK = 0x1ffff;
+
 const uint32_t TDI_EXCHANGE_CTL__INDEX = 0xb;
 const uint32_t TDI_EXCHANGE_CTL__ACTV__SHIFT = 0x0;
 const uint32_t TDI_EXCHANGE_CTL__ACTV__SIZE = 0x1;
@@ -624,6 +681,7 @@ const uint32_t TDI_EXCHANGE_CTL__S64__MASK = 0x1;
 const uint32_t TDI_EXCHANGE_CTL__ATMC__SHIFT = 0x4;
 const uint32_t TDI_EXCHANGE_CTL__ATMC__SIZE = 0x1;
 const uint32_t TDI_EXCHANGE_CTL__ATMC__MASK = 0x1;
+
 const uint32_t TDI_TDI_CTL__INDEX = 0xc;
 const uint32_t TDI_TDI_CTL__SEPEX__SHIFT = 0x0;
 const uint32_t TDI_TDI_CTL__SEPEX__SIZE = 0x1;
@@ -631,6 +689,7 @@ const uint32_t TDI_TDI_CTL__SEPEX__MASK = 0x1;
 const uint32_t TDI_TDI_CTL__DISRC__SHIFT = 0x1;
 const uint32_t TDI_TDI_CTL__DISRC__SIZE = 0x1;
 const uint32_t TDI_TDI_CTL__DISRC__MASK = 0x1;
+
 const uint32_t DATAFMT_SEND_SCTL3__EV__SHIFT = 0x0;
 const uint32_t DATAFMT_SEND_SCTL3__EV__SIZE = 0x1;
 const uint32_t DATAFMT_SEND_SCTL3__EV__MASK = 0x1;
@@ -640,11 +699,13 @@ const uint32_t DATAFMT_SEND_SCTL3__WV__MASK = 0x1;
 const uint32_t DATAFMT_SEND_SCTL3__64BITS__SHIFT = 0x2;
 const uint32_t DATAFMT_SEND_SCTL3__64BITS__SIZE = 0x1;
 const uint32_t DATAFMT_SEND_SCTL3__64BITS__MASK = 0x1;
+
 const uint32_t SOC_IPU_MEM_TILE_STRIDE = 0x40;
 const uint32_t SOC_PCI_COMPLEX_BASE = 0x0;
 const uint32_t SOC_PCI_COMPLEX_SEC_BASE = 0x0;
 const uint32_t SOC_CBUS0_BASE = 0x4000;
 const uint32_t SOC_SS_BASE = 0x4000;
+
 const uint32_t SOC_XB_W_0_BASE = 0x4400;
 const uint32_t SOC_XB_W_1_BASE = 0x4800;
 const uint32_t SOC_XB_W_2_BASE = 0x4c00;
@@ -653,8 +714,10 @@ const uint32_t SOC_XB_W_4_BASE = 0x5400;
 const uint32_t SOC_XB_W_5_BASE = 0x5800;
 const uint32_t SOC_XB_W_6_BASE = 0x5c00;
 const uint32_t SOC_XB_W_7_BASE = 0x6000;
+
 const uint32_t SOC_NLC_W_1B_BASE = 0x6400;
 const uint32_t SOC_NLC_W_1C_BASE = 0x8800;
+
 const uint32_t SOC_TR_W_1X_BASE = 0xac00;
 const uint32_t SOC_TR_W_1C_BASE = 0xb000;
 const uint32_t SOC_TR_W_1B_BASE = 0xb400;
@@ -668,13 +731,17 @@ const uint32_t SOC_TR_W_2_BASE = 0xd000;
 const uint32_t SOC_TR_W_1_BASE = 0xd400;
 const uint32_t SOC_TR_W_0_BASE = 0xd800;
 const uint32_t SOC_TR_W_PCI_BASE = 0xdc00;
+
 const uint32_t SOC_CBUS1_BASE = 0x10000;
+
 const uint32_t SOC_NLC_W_0B_BASE = 0x10000;
 const uint32_t SOC_NLC_W_0C_BASE = 0x12400;
 const uint32_t SOC_NLC_E_2C_BASE = 0x14800;
 const uint32_t SOC_NLC_E_2B_BASE = 0x16c00;
 const uint32_t SOC_NLC_E_2A_BASE = 0x19000;
+
 const uint32_t SOC_SS_E_BASE = 0x1b400;
+
 const uint32_t SOC_XB_E_0_BASE = 0x1b800;
 const uint32_t SOC_XB_E_1_BASE = 0x1bc00;
 const uint32_t SOC_XB_E_2_BASE = 0x1c000;
@@ -683,9 +750,11 @@ const uint32_t SOC_XB_E_4_BASE = 0x1c800;
 const uint32_t SOC_XB_E_5_BASE = 0x1cc00;
 const uint32_t SOC_XB_E_6_BASE = 0x1d000;
 const uint32_t SOC_XB_E_7_BASE = 0x1d400;
+
 const uint32_t SOC_NLC_E_3A_BASE = 0x1d800;
 const uint32_t SOC_NLC_E_3B_BASE = 0x1fc00;
 const uint32_t SOC_NLC_E_3C_BASE = 0x22000;
+
 const uint32_t SOC_TR_E_3X_BASE = 0x24400;
 const uint32_t SOC_TR_E_3C_BASE = 0x24800;
 const uint32_t SOC_TR_E_3B_BASE = 0x24c00;
@@ -705,16 +774,20 @@ const uint32_t SOC_TR_E_2X_BASE = 0x28000;
 const uint32_t SOC_TR_W_0X_BASE = 0x28400;
 const uint32_t SOC_TR_W_0C_BASE = 0x28800;
 const uint32_t SOC_TR_W_0B_BASE = 0x28c00;
+
 const uint32_t SOC_CBUS2_BASE = 0x30000;
+
 const uint32_t SOC_MSIX_TABLE_BAR = 0x4;
 const uint32_t SOC_MSIX_PBA_BAR = 0x5;
 const uint32_t SOC_MSIX_TABLE_OFFSET = 0x0;
 const uint32_t SOC_MSIX_PBA_OFFSET = 0x0;
 const uint32_t SOC_MSIX_NUM_INTERRUPTS = 0x8;
+
 const uint32_t SOC_HOST_PCI_SPACE_ONE_PCI_CPLX_EXCHANGE_BAR = 0x2;
 const uint32_t SOC_HOST_PCI_SPACE_ONE_PCI_CPLX_BAR_SIZE = 0x20000000;
 const uint32_t SOC_HOST_PCI_SPACE_ONE_PCI_CPLX_IPU_BASE = 0xc000000;
 const uint32_t SOC_HOST_PCI_SPACE_ONE_PCI_CPLX_IPU_RANGE = 0x14000000;
+
 const uint32_t SOC_TILE_PCI_SPACE_ONE_PCI_CPLX_PRI_BASE_ADDR = 0x0;
 const uint32_t SOC_TILE_PCI_SPACE_ONE_PCI_CPLX_PRI_RANGE_SMALL = 0x40000000;
 const uint64_t SOC_TILE_PCI_SPACE_ONE_PCI_CPLX_PRI_RANGE_LARGE = 0x400000000;
@@ -723,6 +796,7 @@ const uint32_t SOC_TILE_PCI_SPACE_ONE_PCI_CPLX_PRI_OPT_RANGE = 0x8000000;
 const uint32_t SOC_TILE_PCI_SPACE_ONE_PCI_CPLX_PRI_OAT_BASE_ADDR = 0x8000000;
 const uint32_t SOC_TILE_PCI_SPACE_ONE_PCI_CPLX_PRI_OAT_NUM_REGIONS = 0x8;
 const uint32_t SOC_TILE_PCI_SPACE_ONE_PCI_CPLX_PRI_OAT_MIN_REGION_SIZE_BYTES = 0x1000;
+
 const uint32_t SOC_TILE_PCI_SPACE_TWO_PCI_CPLX_PRI_BASE_ADDR = 0x0;
 const uint32_t SOC_TILE_PCI_SPACE_TWO_PCI_CPLX_PRI_RANGE_SMALL = 0x20000000;
 const uint64_t SOC_TILE_PCI_SPACE_TWO_PCI_CPLX_PRI_RANGE_LARGE = 0x200000000;
@@ -731,6 +805,7 @@ const uint32_t SOC_TILE_PCI_SPACE_TWO_PCI_CPLX_PRI_OPT_RANGE = 0x8000000;
 const uint32_t SOC_TILE_PCI_SPACE_TWO_PCI_CPLX_PRI_OAT_BASE_ADDR = 0x8000000;
 const uint32_t SOC_TILE_PCI_SPACE_TWO_PCI_CPLX_PRI_OAT_NUM_REGIONS = 0x8;
 const uint32_t SOC_TILE_PCI_SPACE_TWO_PCI_CPLX_PRI_OAT_MIN_REGION_SIZE_BYTES = 0x1000;
+
 const uint64_t SOC_TILE_PCI_SPACE_TWO_PCI_CPLX_SEC_BASE_ADDR = 0x200000000;
 const uint32_t SOC_TILE_PCI_SPACE_TWO_PCI_CPLX_SEC_RANGE_SMALL = 0x20000000;
 const uint64_t SOC_TILE_PCI_SPACE_TWO_PCI_CPLX_SEC_RANGE_LARGE = 0x200000000;
@@ -738,6 +813,7 @@ const uint64_t SOC_TILE_PCI_SPACE_TWO_PCI_CPLX_SEC_OPT_BASE_ADDR = 0x200000000;
 const uint32_t SOC_TILE_PCI_SPACE_TWO_PCI_CPLX_SEC_OPT_RANGE = 0x8000000;
 const uint64_t SOC_TILE_PCI_SPACE_TWO_PCI_CPLX_SEC_OAT_BASE_ADDR = 0x208000000;
 const uint32_t SOC_TILE_PCI_SPACE_TWO_PCI_CPLX_SEC_OAT_NUM_REGIONS = 0x8;
+
 const uint32_t SOC_TLINK_PACKET_XREQ_HDR_WORDS = 0x2;
 const uint32_t SOC_TLINK_PACKET_XFC_HDR_WORDS = 0x1;
 const uint32_t SOC_TLINK_PACKET_XTWRS_HDR_WORDS = 0x2;
@@ -748,6 +824,7 @@ const uint32_t SOC_TLINK_PACKET_XPRDS_HDR_WORDS = 0x2;
 const uint32_t SOC_TLINK_PACKET_XPRDL_HDR_WORDS = 0x2;
 const uint32_t SOC_ELINK_PACKET_ETWR_HDR_WORDS = 0x4;
 const uint32_t SOC_ELINK_PACKET_EPRD_HDR_WORDS = 0x4;
+
 const uint32_t SOC_IPU_MEM_BASE = 0x30000;
 
 enum TileRunMode {
@@ -1242,16 +1319,3 @@ enum SOC_SS_E_PVTECR_PVTSAMPLE {
   SOC_SS_E_PVTECR_PVTSAMPLE_VOLT2 = 6,
   SOC_SS_E_PVTECR_PVTSAMPLE_VOLT4 = 7,
 };
-
-enum SOC_SS_GSPCR2_CFGDIR {
-};
-
-enum SOC_SS_GSPCR2_CFGIO {
-};
-
-enum SOC_PCI_COMPLEX_LOCKR_SECURITY_MODE_VAL {
-};
-
-enum SOC_SXP_CSR_SXPERRST {
-};
-
