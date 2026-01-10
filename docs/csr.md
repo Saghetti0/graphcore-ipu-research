@@ -209,7 +209,7 @@ Unknown function. Probably related to communications?
 |-|-|-|-|-|
 |ADDR|[18:2]|???|???|Unknown|
 
-### `$INCOMINGS_SINIT (0xa5)`
+### `$INCOMING_SINIT (0xa5)`
 
 Unknown function. Probably related to communications?
 
