@@ -1,0 +1,2198 @@
+[
+  {
+    "name": "CSR_S",
+    "registers": [
+      {
+        "name": "PC",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "DBG_DATA",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "DBG_BRK_ID",
+        "base_addr": false,
+        "fields": [
+          "CHAN_ID"
+        ]
+      },
+      {
+        "name": "SSR",
+        "base_addr": false,
+        "fields": [
+          "LC",
+          "GC",
+          "ANS",
+          "RAERR",
+          "ETYPE",
+          "PERR"
+        ]
+      },
+      {
+        "name": "CR",
+        "base_addr": false,
+        "fields": [
+          "LC_CLR",
+          "LC_SET",
+          "ZCWEI"
+        ]
+      },
+      {
+        "name": "TILE_ID",
+        "base_addr": false,
+        "fields": [
+          "TILE_ID"
+        ]
+      },
+      {
+        "name": "FP_ICTL",
+        "base_addr": false,
+        "fields": [
+          "INV",
+          "DIV0",
+          "OFLO",
+          "RND",
+          "ESR",
+          "NANOO"
+        ]
+      },
+      {
+        "name": "WORKER0_BASE",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "WORKER1_BASE",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "WORKER2_BASE",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "WORKER3_BASE",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "WORKER4_BASE",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "WORKER5_BASE",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "CCCSLOAD",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "SCOUNT_L",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "SCOUNT_U",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "CTXT_STS",
+        "base_addr": false,
+        "fields": [
+          "SU",
+          "W0",
+          "W1",
+          "W2",
+          "W3",
+          "W4",
+          "W5",
+          "ERERR",
+          "EERR",
+          "MERR"
+        ]
+      },
+      {
+        "name": "DBG_CTL",
+        "base_addr": false,
+        "fields": [
+          "CHAN_EN"
+        ]
+      },
+      {
+        "name": "DBG_ECSR",
+        "base_addr": false,
+        "fields": [
+          "EPCM",
+          "CTXT",
+          "BOS"
+        ]
+      },
+      {
+        "name": "DBG_ECLR",
+        "base_addr": false,
+        "fields": [
+          "CLR"
+        ]
+      },
+      {
+        "name": "DBG_IBRK0_CTL",
+        "base_addr": false,
+        "fields": [
+          "ENS",
+          "ENW",
+          "EVM"
+        ]
+      },
+      {
+        "name": "DBG_IBRK0_PC",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "DBG_IBRK0_VERT",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "DBG_DBRK0_CTL",
+        "base_addr": false,
+        "fields": [
+          "MLD",
+          "MSTNI",
+          "SIC",
+          "SIZE",
+          "MDNR",
+          "CTXT"
+        ]
+      },
+      {
+        "name": "DBG_DBRK0_BASE",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "DBG_DBRK0_SIDA",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "INCOMING_MUX",
+        "base_addr": false,
+        "fields": [
+          "TILE_ID"
+        ]
+      },
+      {
+        "name": "INCOMING_MUXPAIR",
+        "base_addr": false,
+        "fields": [
+          "TILE_ID"
+        ]
+      },
+      {
+        "name": "INCOMING_DELTA",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "INCOMING_FORMAT",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "INCOMING_BASE",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "INCOMING_SINIT",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "INCOMING_DCOUNT",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "OUTGOING_BASE",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "OUTGOING_DELTA",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "EXCHANGE_CTL",
+        "base_addr": false,
+        "fields": [
+          "ACTV",
+          "SEV",
+          "SWV",
+          "S64",
+          "ATMC"
+        ]
+      },
+      {
+        "name": "ANS_DCOUNT",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "EXCHANGE_ADJ",
+        "base_addr": false,
+        "fields": [
+          "COFF",
+          "SEWS"
+        ]
+      },
+      {
+        "name": "SNOTIFY",
+        "base_addr": false,
+        "fields": [
+          "A"
+        ]
+      },
+      {
+        "name": "FP_INFMT",
+        "base_addr": false,
+        "fields": [
+          "CWEI_FMT",
+          "ARF_FMT"
+        ]
+      },
+      {
+        "name": "FP_ISCL",
+        "base_addr": false,
+        "fields": [
+          "SCALE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CSR_W",
+    "registers": [
+      {
+        "name": "PC",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "DBG_DATA",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "DBG_BRK_ID",
+        "base_addr": false,
+        "fields": [
+          "CHAN_ID"
+        ]
+      },
+      {
+        "name": "WSR",
+        "base_addr": false,
+        "fields": [
+          "CTXTID_M1",
+          "ETYPE",
+          "ERPT"
+        ]
+      },
+      {
+        "name": "VERTEX_BASE",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "WORKER_BASE",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "REPEAT_COUNT",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "REPEAT_FIRST",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "REPEAT_END",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "COUNT_L",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "COUNT_U",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "FP_STS",
+        "base_addr": false,
+        "fields": [
+          "INV",
+          "DIV0",
+          "OFLO"
+        ]
+      },
+      {
+        "name": "FP_CLR",
+        "base_addr": false,
+        "fields": [
+          "INV",
+          "DIV0",
+          "OFLO",
+          "ZAACC"
+        ]
+      },
+      {
+        "name": "FP_CTL",
+        "base_addr": false,
+        "fields": [
+          "INV",
+          "DIV0",
+          "OFLO",
+          "RND",
+          "ESR",
+          "NANOO"
+        ]
+      },
+      {
+        "name": "PRNG_0_0",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "PRNG_0_1",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "PRNG_1_0",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "PRNG_1_1",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "PRNG_SEED",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "TAS",
+        "base_addr": false,
+        "fields": [
+          "F16_0",
+          "F16_16"
+        ]
+      },
+      {
+        "name": "FP_NFMT",
+        "base_addr": false,
+        "fields": [
+          "CWEI_FMT",
+          "ARF_FMT"
+        ]
+      },
+      {
+        "name": "FP_SCL",
+        "base_addr": false,
+        "fields": [
+          "SCALE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "TDI",
+    "registers": [
+      {
+        "name": "CTXT_STS",
+        "base_addr": false,
+        "fields": [
+          "SU",
+          "W0",
+          "W1",
+          "W2",
+          "W3",
+          "W4",
+          "W5",
+          "ERERR",
+          "EERR",
+          "MERR"
+        ]
+      },
+      {
+        "name": "DBG_RBRK",
+        "base_addr": false,
+        "fields": [
+          "EN",
+          "ATOV",
+          "VM_EN"
+        ]
+      },
+      {
+        "name": "DBG_RBRK_VERT",
+        "base_addr": false,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "DBG_IEXEC",
+        "base_addr": false,
+        "fields": [
+          "INST"
+        ]
+      },
+      {
+        "name": "DBG_IOWNER",
+        "base_addr": false,
+        "fields": [
+          "CTXT"
+        ]
+      },
+      {
+        "name": "DBG_ECSR",
+        "base_addr": false,
+        "fields": [
+          "EPCM",
+          "CTXT",
+          "BOS"
+        ]
+      },
+      {
+        "name": "DBG_ECLR",
+        "base_addr": false,
+        "fields": [
+          "CLR"
+        ]
+      },
+      {
+        "name": "DBG_DATA",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "TDI_STS",
+        "base_addr": false,
+        "fields": [
+          "CNQ",
+          "INV",
+          "DBLE",
+          "BUSY"
+        ]
+      },
+      {
+        "name": "TDI_CLR",
+        "base_addr": false,
+        "fields": [
+          "CNQ",
+          "INV",
+          "DBLE"
+        ]
+      },
+      {
+        "name": "INCOMING_DCOUNT",
+        "base_addr": false,
+        "fields": [
+          "VALUE"
+        ]
+      },
+      {
+        "name": "EXCHANGE_CTL",
+        "base_addr": false,
+        "fields": [
+          "ACTV",
+          "SEV",
+          "SWV",
+          "S64",
+          "ATMC"
+        ]
+      },
+      {
+        "name": "TDI_CTL",
+        "base_addr": false,
+        "fields": [
+          "SEPEX",
+          "DISRC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "TR",
+    "registers": [
+      {
+        "name": "CSR",
+        "base_addr": false,
+        "fields": [
+          "TREN",
+          "ERRSTATUS",
+          "ERRCODE",
+          "_ERROR"
+        ]
+      },
+      {
+        "name": "XEGRNR",
+        "base_addr": false,
+        "fields": [
+          "EGLANE",
+          "PCIEG",
+          "TILEMEN",
+          "IPUMEN",
+          "TILEBM",
+          "IPUBM"
+        ]
+      },
+      {
+        "name": "XEGRSR",
+        "base_addr": false,
+        "fields": [
+          "EGLANE",
+          "PCIEG",
+          "TILEMEN",
+          "IPUMEN",
+          "TILEBM",
+          "IPUBM"
+        ]
+      },
+      {
+        "name": "XIGLRR",
+        "base_addr": false,
+        "fields": [
+          "NTILEMEN",
+          "STILEMEN",
+          "NOMATCHEN",
+          "TID0LANE",
+          "TID1LANE",
+          "TID2LANE",
+          "TID3LANE",
+          "TID4LANE",
+          "TID5LANE",
+          "TID6LANE",
+          "TID7LANE",
+          "LANENTM",
+          "LANEPCI"
+        ]
+      },
+      {
+        "name": "ERECR0",
+        "base_addr": false,
+        "fields": [
+          "REC"
+        ]
+      },
+      {
+        "name": "ERECR1",
+        "base_addr": false,
+        "fields": [
+          "REC"
+        ]
+      },
+      {
+        "name": "ERECR2",
+        "base_addr": false,
+        "fields": [
+          "REC"
+        ]
+      },
+      {
+        "name": "ERECR3",
+        "base_addr": false,
+        "fields": [
+          "REC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "XB",
+    "registers": [
+      {
+        "name": "CSR",
+        "base_addr": false,
+        "fields": [
+          "EN",
+          "ECRCEN",
+          "PCIROUTING",
+          "IPUID",
+          "DISPATCH",
+          "ERRFLGS",
+          "ERRSTATUS",
+          "ERRCODE",
+          "ERRSRC",
+          "_ERROR",
+          "TLINKTIM_DIS",
+          "XREQTIM_DIS"
+        ]
+      },
+      {
+        "name": "DCXCR",
+        "base_addr": false,
+        "fields": [
+          "DCXHWM",
+          "DCX0XREQID",
+          "DCX1XREQID",
+          "DCX2XREQID",
+          "DCX3XREQID"
+        ]
+      },
+      {
+        "name": "XERDR",
+        "base_addr": false,
+        "fields": [
+          "NORTH",
+          "SOUTH"
+        ]
+      },
+      {
+        "name": "CCX0RECR0",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "CCX1RECR0",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "CCX2RECR0",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "CCX3RECR0",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "CCX3RECR1",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "CCX1RECR1",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "CCX2RECR1",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "CCX0RECR1",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "ERECR0",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "ERECR1",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "ERECR2",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "ERECR3",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "XREQ0RR0",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "XREQ0RR1",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "XREQ1RR0",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "XREQ1RR1",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "XREQ2RR0",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "XREQ2RR1",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "XREQ3RR0",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      },
+      {
+        "name": "XREQ3RR1",
+        "base_addr": false,
+        "fields": [
+          "RECORD"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "NLC",
+    "registers": [
+      {
+        "name": "CSR",
+        "base_addr": false,
+        "fields": [
+          "EN",
+          "DBICS2",
+          "DBIADDR0",
+          "IPUID",
+          "CORERRCNT",
+          "CORERROR",
+          "ERRCODE",
+          "ERRSTATUS",
+          "_ERROR"
+        ]
+      },
+      {
+        "name": "LCSR",
+        "base_addr": false,
+        "fields": [
+          "LINKDN",
+          "COREDN",
+          "LTSSMSTATE",
+          "PMSTATE",
+          "LTSSMEN",
+          "RXLANEFLIP",
+          "TXLANEFLIP",
+          "SRISEN",
+          "FASTLINK",
+          "RPMODE",
+          "PCIEN",
+          "DCTERM",
+          "TUNEREQ",
+          "TUNEACK",
+          "VPHNOM",
+          "CORERRTHRESH",
+          "FWUSESRAM",
+          "SRAMLDDONE",
+          "SRAMINITDONE",
+          "CMNREFCKMODE"
+        ]
+      },
+      {
+        "name": "XERDR",
+        "base_addr": false,
+        "fields": [
+          "NORTH",
+          "SOUTH"
+        ]
+      },
+      {
+        "name": "ERECR0",
+        "base_addr": false,
+        "fields": [
+          "REC"
+        ]
+      },
+      {
+        "name": "ERECR1",
+        "base_addr": false,
+        "fields": [
+          "REC"
+        ]
+      },
+      {
+        "name": "ERECR2",
+        "base_addr": false,
+        "fields": [
+          "REC"
+        ]
+      },
+      {
+        "name": "ERECR3",
+        "base_addr": false,
+        "fields": [
+          "REC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SS",
+    "registers": [
+      {
+        "name": "SILSETPCI",
+        "base_addr": true,
+        "fields": [
+          "EMAA2P",
+          "EMAB2P",
+          "EMASA2P",
+          "STOV2P",
+          "EMA1P",
+          "EMAW1P",
+          "EMAS1P",
+          "STOV1P",
+          "RMEA_2P",
+          "RMEB_2P",
+          "RMA_2P",
+          "RMB_2P",
+          "RA_2P",
+          "TEST1A_2P",
+          "TEST1B_2P",
+          "RME_1P",
+          "RM_1P",
+          "RA_1P",
+          "TEST1_1P",
+          "ROM_RME",
+          "ROM_RM"
+        ]
+      },
+      {
+        "name": "SILSETSYS",
+        "base_addr": true,
+        "fields": [
+          "EMAA2P",
+          "EMAB2P",
+          "EMASA2P",
+          "STOV2P",
+          "EMA1P",
+          "EMAW1P",
+          "EMAS1P",
+          "STOV1P",
+          "PADMISCDS",
+          "PADMISCSLEN",
+          "PADREFCKODS",
+          "PADREFCKOSLEN",
+          "BISRDISABLE",
+          "FUSEBUFSEL",
+          "BISRLOAD",
+          "BISRLOADED",
+          "BISRDONE",
+          "BISRPASS",
+          "RMEA_2P",
+          "RMEB_2P",
+          "RMA_2P",
+          "RMB_2P",
+          "RA_2P",
+          "TEST1A_2P",
+          "TEST1B_2P",
+          "RME_1P",
+          "RM_1P",
+          "RA_1P",
+          "TEST1_1P"
+        ]
+      },
+      {
+        "name": "SILSETIPU",
+        "base_addr": true,
+        "fields": [
+          "EMAA2P",
+          "EMAB2P",
+          "EMASA2P",
+          "STOV2P",
+          "EMA1P",
+          "EMAW1P",
+          "EMAS1P",
+          "STOV1P",
+          "PADGSADS",
+          "PADGSASLEN",
+          "PADGSBDS",
+          "PADGSBSLEN",
+          "PADGSCDS",
+          "PADGSCSLEN",
+          "BISRENABLE",
+          "BISRLOADED",
+          "RME_1P",
+          "RM_1P",
+          "RA_1P",
+          "TEST1_1P"
+        ]
+      },
+      {
+        "name": "TILEREPAIR_0_5",
+        "base_addr": true,
+        "fields": [
+          "COLUMN0",
+          "COLUMN1",
+          "COLUMN2",
+          "COLUMN3",
+          "COLUMN4",
+          "COLUMN5"
+        ]
+      },
+      {
+        "name": "TILEREPAIR_6_11",
+        "base_addr": true,
+        "fields": [
+          "COLUMN6",
+          "COLUMN7",
+          "COLUMN8",
+          "COLUMN9",
+          "COLUMN10",
+          "COLUMN11"
+        ]
+      },
+      {
+        "name": "TILEREPAIR_12_15",
+        "base_addr": true,
+        "fields": [
+          "COLUMN12",
+          "COLUMN13",
+          "COLUMN14",
+          "COLUMN15"
+        ]
+      },
+      {
+        "name": "SILSETPVT0CR",
+        "base_addr": true,
+        "fields": [
+          "DATA",
+          "VALID",
+          "PVTSAMPLE",
+          "TRIMG",
+          "TRIMO",
+          "EN",
+          "OTS"
+        ]
+      },
+      {
+        "name": "SILSETPVT1CR",
+        "base_addr": true,
+        "fields": [
+          "DATA",
+          "VALID",
+          "PVTSAMPLE",
+          "TRIMG",
+          "TRIMO",
+          "EN",
+          "OTS"
+        ]
+      },
+      {
+        "name": "SILSETPVT2CR",
+        "base_addr": true,
+        "fields": [
+          "DATA",
+          "VALID",
+          "PVTSAMPLE",
+          "TRIMG",
+          "TRIMO",
+          "EN",
+          "OTS"
+        ]
+      },
+      {
+        "name": "SILSETSYSPLLBWAR",
+        "base_addr": true,
+        "fields": [
+          "ADJ"
+        ]
+      },
+      {
+        "name": "SILSETSIPUPLLBWAR",
+        "base_addr": true,
+        "fields": [
+          "ADJ"
+        ]
+      },
+      {
+        "name": "SILSETFIPUPLLBWAR",
+        "base_addr": true,
+        "fields": [
+          "ADJ"
+        ]
+      },
+      {
+        "name": "LOCKR",
+        "base_addr": true,
+        "fields": [
+          "SILLOCK",
+          "HOSTLOCK"
+        ]
+      },
+      {
+        "name": "SYSPLLCR",
+        "base_addr": true,
+        "fields": [
+          "RESET",
+          "PWRDN",
+          "BYPN",
+          "TEST",
+          "FASTEN",
+          "ENSAT",
+          "CLKR",
+          "CLKF",
+          "CLKOD",
+          "DIVR",
+          "DIVF",
+          "DIVQ"
+        ]
+      },
+      {
+        "name": "SIPUPLLCR",
+        "base_addr": true,
+        "fields": [
+          "RESET",
+          "PWRDN",
+          "BYPN",
+          "TEST",
+          "FASTEN",
+          "ENSAT",
+          "CLKR",
+          "CLKF",
+          "CLKOD",
+          "IPUCLKCNTEN",
+          "DIVR",
+          "DIVF",
+          "DIVQ"
+        ]
+      },
+      {
+        "name": "FIPUPLLCR",
+        "base_addr": true,
+        "fields": [
+          "RESET",
+          "PWRDN",
+          "BYPN",
+          "TEST",
+          "FASTEN",
+          "ENSAT",
+          "CLKR",
+          "CLKF",
+          "CLKOD",
+          "DIVR",
+          "DIVF",
+          "DIVQ"
+        ]
+      },
+      {
+        "name": "SYSCR",
+        "base_addr": true,
+        "fields": [
+          "IPURSTN",
+          "SYSCLKSRC",
+          "IPUCLKSRC",
+          "TEMPTHRESH",
+          "EMTHRESH",
+          "GSPINTEN",
+          "LOCKINTEN",
+          "SLIPINTEN",
+          "EMINTEN",
+          "NEWMANRSTN"
+        ]
+      },
+      {
+        "name": "SYSSR",
+        "base_addr": true,
+        "fields": [
+          "SYSPLLLOCK",
+          "SIPUPLLLOCK",
+          "FIPUPLLLOCK",
+          "SYSLOCKLOST",
+          "SIPULOCKLOST",
+          "FIPULOCKLOST",
+          "SYSSLIP",
+          "SIPUSLIP",
+          "FIPUSLIP",
+          "EMSHUTDN"
+        ]
+      },
+      {
+        "name": "IPUCLKCOUNTLSBR",
+        "base_addr": true,
+        "fields": [
+          "COUNT"
+        ]
+      },
+      {
+        "name": "IPUCLKCOUNTMSBR",
+        "base_addr": true,
+        "fields": [
+          "COUNT"
+        ]
+      },
+      {
+        "name": "GSPCR",
+        "base_addr": true,
+        "fields": [
+          "GSAYDRIVEN",
+          "GSAGS1DIR",
+          "GSAGS2DIR",
+          "GSBYDRIVEN",
+          "GSBGS1DIR",
+          "GSBGS2DIR",
+          "GSCYDRIVEN",
+          "GSCGS1DIR",
+          "GSCGS2DIR",
+          "_ERROR",
+          "GSAGS3DIR",
+          "GSAGS4DIR",
+          "GSBGS3DIR",
+          "GSBGS4DIR",
+          "GSCGS3DIR",
+          "GSCGS4DIR"
+        ]
+      },
+      {
+        "name": "GSPSR",
+        "base_addr": true,
+        "fields": [
+          "GSAYIN",
+          "GSAXIN",
+          "GSAYOUT",
+          "GSAXOUT",
+          "GSBYIN",
+          "GSBXIN",
+          "GSBYOUT",
+          "GSBXOUT",
+          "GSCYIN",
+          "GSCXIN",
+          "GSCYOUT",
+          "GSCXOUT",
+          "IPUSREQ",
+          "IPUPAYL",
+          "SREQEQ",
+          "HSPACK"
+        ]
+      },
+      {
+        "name": "GSPCR2",
+        "base_addr": true,
+        "fields": [
+          "GSDYDRIVEN",
+          "GSDGS1DIR",
+          "GSDGS2DIR",
+          "GSDGS3DIR",
+          "GSDGS4DIR"
+        ]
+      },
+      {
+        "name": "GSPSR2",
+        "base_addr": true,
+        "fields": [
+          "GSDYIN",
+          "GSDXIN",
+          "GSDYOUT",
+          "GSDXOUT"
+        ]
+      },
+      {
+        "name": "BISRCSR",
+        "base_addr": true,
+        "fields": [
+          "SOCBISRDISABLE",
+          "SOCFUSEBUFSEL",
+          "SOCBISRINIT_N",
+          "SOCBISRLOADED",
+          "SOCBISRDONE",
+          "SOCBISRPASS",
+          "IPUBISRDISABLE",
+          "IPUBISRLOADED"
+        ]
+      },
+      {
+        "name": "SILSETPADS",
+        "base_addr": true,
+        "fields": [
+          "PADGSADS",
+          "PADGSASLEN",
+          "PADGSBDS",
+          "PADGSBSLEN",
+          "PADGSCDS",
+          "PADGSCSLEN",
+          "PADGSDDS",
+          "PADGSDSLEN",
+          "PADMISCDS",
+          "PADMISCSLEN",
+          "PADREFCKODS",
+          "PADREFCKOSLEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "PCI_COMPLEX",
+    "registers": [
+      {
+        "name": "CCSR",
+        "base_addr": true,
+        "fields": [
+          "CPLMODE",
+          "NOSNOOP",
+          "DUALPCI",
+          "DBICS2",
+          "DBIADDR0",
+          "IPUID",
+          "GWMODE",
+          "ELINKECRCEN",
+          "CPLBUFMRGN",
+          "HUGEPAGE"
+        ]
+      },
+      {
+        "name": "CIUERRVR",
+        "base_addr": true,
+        "fields": [
+          "SOC0PGMERR",
+          "SOC1PGMERR",
+          "ELINKPGMERR",
+          "HEXOVERFLOWERR",
+          "MCUPGMERR",
+          "SOC0SOFTERR",
+          "SOC1SOFTERR",
+          "ELINKSOFTERR",
+          "IPUSOFTERR",
+          "NMLINKDN0",
+          "NMLINKDN1",
+          "MCUSOFTERR",
+          "FIRSTERROR"
+        ]
+      },
+      {
+        "name": "CICERRVR",
+        "base_addr": true,
+        "fields": [
+          "MCUCORERR",
+          "CORLINKERR"
+        ]
+      },
+      {
+        "name": "CMGMTEVVR",
+        "base_addr": true,
+        "fields": [
+          "NMLINKDN0",
+          "NMLINKDN1",
+          "CPORTERR",
+          "PCIDRVALID",
+          "PCICOREDN",
+          "PCILINKDN",
+          "PCIERR",
+          "SSPL",
+          "DSTATENOTD0",
+          "DSTATENOTD3",
+          "PMTURNOFF",
+          "OVERTEMP",
+          "SECEXP",
+          "FLR"
+        ]
+      },
+      {
+        "name": "CMGMTEVMSKR",
+        "base_addr": true,
+        "fields": [
+          "NMLINKDN0",
+          "NMLINKDN1",
+          "CPORTERR",
+          "PCIDRVALID",
+          "PCICOREDN",
+          "PCILINKDN",
+          "PCIERR",
+          "SSPL",
+          "DSTATENOTD0",
+          "DSTATENOTD3",
+          "PMTURNOFF",
+          "SECEXP",
+          "FLR"
+        ]
+      },
+      {
+        "name": "CSYSEVVR",
+        "base_addr": true,
+        "fields": [
+          "IPUEX",
+          "MCUDRVALID",
+          "HSPGS1NOTIFY0",
+          "HSPGS1NOTIFY1",
+          "HSPGS2NOTIFY0",
+          "HSPGS2NOTIFY1"
+        ]
+      },
+      {
+        "name": "CLCR",
+        "base_addr": true,
+        "fields": [
+          "LTSSMSTATE",
+          "DSTATE",
+          "BUSMASTEREN",
+          "MSIEN",
+          "LTSSMEN",
+          "PCIEN",
+          "RXLANEFLIP",
+          "TXLANEFLIP",
+          "SRISEN",
+          "FASTLINK",
+          "NOTURNOFF",
+          "READYCFG",
+          "TUNEREQ",
+          "TUNEACK",
+          "VPHNOM",
+          "FWUSESRAM",
+          "SRAMLDDONE",
+          "SRAMINITDONE",
+          "CMNREFCKMODE"
+        ]
+      },
+      {
+        "name": "MCUCMDR",
+        "base_addr": true,
+        "fields": [
+          "COMMAND"
+        ]
+      },
+      {
+        "name": "MCUDATR0",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "MCUDATR1",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "MCUDATR2",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "MCUDATR3",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "CPBR0",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "CPBR1",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "CPBR2",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "CPBR3",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "CPBR4",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "CPBR5",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "CPBR6",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "CPBR7",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "PCICMDR",
+        "base_addr": true,
+        "fields": [
+          "COMMAND"
+        ]
+      },
+      {
+        "name": "PCIDATR0",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "PCIDATR1",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "PCIDATR2",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "PCIDATR3",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "HSPGS1CR",
+        "base_addr": true,
+        "fields": [
+          "MARK",
+          "HOSTEXST",
+          "EXSTCOND",
+          "COLEXST",
+          "NOTIFY",
+          "FLAG"
+        ]
+      },
+      {
+        "name": "HSPGS2CR",
+        "base_addr": true,
+        "fields": [
+          "MARK",
+          "HOSTEXST",
+          "EXSTCOND",
+          "COLEXST",
+          "NOTIFY",
+          "FLAG"
+        ]
+      },
+      {
+        "name": "HEXOPTDBGI",
+        "base_addr": true,
+        "fields": [
+          "INDEX",
+          "UPPER",
+          "WRITE",
+          "READ"
+        ]
+      },
+      {
+        "name": "HEXOPTDBGD",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "HSPGS1LR",
+        "base_addr": true,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "HSPGS2LR",
+        "base_addr": true,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "ERECR0",
+        "base_addr": true,
+        "fields": [
+          "REC"
+        ]
+      },
+      {
+        "name": "ERECR1",
+        "base_addr": true,
+        "fields": [
+          "REC"
+        ]
+      },
+      {
+        "name": "ERECR2",
+        "base_addr": true,
+        "fields": [
+          "REC"
+        ]
+      },
+      {
+        "name": "ERECR3",
+        "base_addr": true,
+        "fields": [
+          "REC"
+        ]
+      },
+      {
+        "name": "CBUSRDRQR",
+        "base_addr": true,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "CBUSRDRSPR",
+        "base_addr": true,
+        "fields": [
+          "DATA",
+          "STATUS"
+        ]
+      },
+      {
+        "name": "CBUSWRRQR",
+        "base_addr": true,
+        "fields": [
+          "DATA",
+          "ADDR"
+        ]
+      },
+      {
+        "name": "CBUSWRRSPR",
+        "base_addr": true,
+        "fields": [
+          "STATUS"
+        ]
+      },
+      {
+        "name": "HSPGS1HILR",
+        "base_addr": true,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "HSPGS2HILR",
+        "base_addr": true,
+        "fields": [
+          "ADDR"
+        ]
+      },
+      {
+        "name": "CSECEXPMASKR",
+        "base_addr": true,
+        "fields": [
+          "SOC0PGMERR",
+          "SOC1PGMERR",
+          "ELINKPGMERR",
+          "HEXOVERFLOWERR",
+          "SOC0SOFTERR",
+          "SOC1SOFTERR",
+          "ELINKSOFTERR",
+          "NMLINKDN0",
+          "NMLINKDN1",
+          "CPORTERR",
+          "PCILINKDN",
+          "PCIERR"
+        ]
+      },
+      {
+        "name": "AUTOLDCSR",
+        "base_addr": true,
+        "fields": [
+          "LOADPTR",
+          "GO",
+          "CURNTTILE",
+          "DATAPRESENT"
+        ]
+      },
+      {
+        "name": "AUTOLDTRGTR",
+        "base_addr": true,
+        "fields": [
+          "STARTADDR_19_10",
+          "ENDADDR_19_10",
+          "ZONE"
+        ]
+      },
+      {
+        "name": "AUTOLDDATAR",
+        "base_addr": true,
+        "fields": [
+          "DATA"
+        ]
+      },
+      {
+        "name": "LOCKR",
+        "base_addr": true,
+        "fields": [
+          "SILLOCK",
+          "SECURITY_MODE",
+          "IPUDBGDIS",
+          "TESTDIS"
+        ]
+      },
+      {
+        "name": "EXCHWINDOWBASER",
+        "base_addr": true,
+        "fields": [
+          "INDEX",
+          "HEXOPT"
+        ]
+      },
+      {
+        "name": "HEXOPTUPDINDEXR",
+        "base_addr": true,
+        "fields": [
+          "LASTINDEX"
+        ]
+      },
+      {
+        "name": "HEXOPTUPDDATAHIR",
+        "base_addr": true,
+        "fields": [
+          "LASTDATA"
+        ]
+      },
+      {
+        "name": "HEXOPTUPDDATALOR",
+        "base_addr": true,
+        "fields": [
+          "LASTDATA"
+        ]
+      },
+      {
+        "name": "TILEUPDR",
+        "base_addr": true,
+        "fields": [
+          "LASTADDR",
+          "LASTTILEID"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SS_E",
+    "registers": [
+      {
+        "name": "PVTECR",
+        "base_addr": false,
+        "fields": [
+          "DATA",
+          "VALID",
+          "PVTSAMPLE",
+          "TRIMG",
+          "TRIMO",
+          "EN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SXP",
+    "registers": [
+      {
+        "name": "CSR",
+        "base_addr": false,
+        "fields": [
+          "HOST_MODE",
+          "IPU_MODE",
+          "ECRCEN",
+          "HOST_RXBYTELIMITEN",
+          "IPU_TXBYTELIMITEN",
+          "SEC_FEATURE_DIS",
+          "SECEXPST",
+          "SECEXP"
+        ]
+      },
+      {
+        "name": "HOST_RXBYTELIMITR",
+        "base_addr": false,
+        "fields": [
+          "LIMIT"
+        ]
+      },
+      {
+        "name": "HOST_RXBYTELIMITW",
+        "base_addr": false,
+        "fields": [
+          "INC"
+        ]
+      },
+      {
+        "name": "IPU_TXBYTELIMITR",
+        "base_addr": false,
+        "fields": [
+          "LIMIT"
+        ]
+      },
+      {
+        "name": "IPU_TXBYTELIMITW",
+        "base_addr": false,
+        "fields": [
+          "INC"
+        ]
+      },
+      {
+        "name": "KLOAD0R",
+        "base_addr": false,
+        "fields": [
+          "KEYDATA"
+        ]
+      },
+      {
+        "name": "KLOAD1R",
+        "base_addr": false,
+        "fields": [
+          "KEYDATA"
+        ]
+      },
+      {
+        "name": "KLOAD2R",
+        "base_addr": false,
+        "fields": [
+          "KEYDATA"
+        ]
+      },
+      {
+        "name": "KLOAD3R",
+        "base_addr": false,
+        "fields": [
+          "KEYDATA"
+        ]
+      },
+      {
+        "name": "KLOAD4R",
+        "base_addr": false,
+        "fields": [
+          "KEYDATA"
+        ]
+      },
+      {
+        "name": "KLOAD5R",
+        "base_addr": false,
+        "fields": [
+          "KEYDATA"
+        ]
+      },
+      {
+        "name": "KLOAD6R",
+        "base_addr": false,
+        "fields": [
+          "KEYDATA"
+        ]
+      },
+      {
+        "name": "KLOAD7R",
+        "base_addr": false,
+        "fields": [
+          "KEYDATA"
+        ]
+      },
+      {
+        "name": "KCTXTR",
+        "base_addr": false,
+        "fields": [
+          "KEYINDEX"
+        ]
+      },
+      {
+        "name": "KCTXTINVALR",
+        "base_addr": false,
+        "fields": [
+          "KEYINDEX"
+        ]
+      },
+      {
+        "name": "KSELLIMITCR",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT0R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT1R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT2R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT3R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT4R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT5R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT6R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT7R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT8R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT9R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT10R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT11R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT12R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT13R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT14R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KSELLIMIT15R",
+        "base_addr": false,
+        "fields": [
+          "ADDRLIMIT"
+        ]
+      },
+      {
+        "name": "KPHYSMAP0",
+        "base_addr": false,
+        "fields": [
+          "PKEY0_KREG",
+          "PKEY1_KREG",
+          "PKEY2_KREG",
+          "PKEY3_KREG",
+          "PKEY4_KREG",
+          "PKEY5_KREG",
+          "PKEY6_KREG",
+          "PKEY7_KREG"
+        ]
+      },
+      {
+        "name": "KPHYSMAP1",
+        "base_addr": false,
+        "fields": [
+          "PKEY8_KREG",
+          "PKEY9_KREG",
+          "PKEY10_KREG",
+          "PKEY11_KREG",
+          "PKEY12_KREG",
+          "PKEY13_KREG",
+          "PKEY14_KREG",
+          "PKEY15_KREG"
+        ]
+      },
+      {
+        "name": "KXBCTXTMAP0",
+        "base_addr": false,
+        "fields": [
+          "XBCTXT0_PKEY",
+          "XBCTXT1_PKEY",
+          "XBCTXT2_PKEY",
+          "XBCTXT3_PKEY",
+          "XBCTXT4_PKEY",
+          "XBCTXT5_PKEY",
+          "XBCTXT6_PKEY",
+          "XBCTXT7_PKEY"
+        ]
+      },
+      {
+        "name": "KXBCTXTMAP1",
+        "base_addr": false,
+        "fields": [
+          "XBCTXT8_PKEY",
+          "XBCTXT9_PKEY",
+          "XBCTXT10_PKEY",
+          "XBCTXT11_PKEY",
+          "XBCTXT12_PKEY",
+          "XBCTXT13_PKEY",
+          "XBCTXT14_PKEY",
+          "XBCTXT15_PKEY"
+        ]
+      },
+      {
+        "name": "KXBCTXTMAP2",
+        "base_addr": false,
+        "fields": [
+          "XBCTXT16_PKEY",
+          "XBCTXT17_PKEY",
+          "XBCTXT18_PKEY",
+          "XBCTXT19_PKEY",
+          "XBCTXT20_PKEY",
+          "XBCTXT21_PKEY",
+          "XBCTXT22_PKEY",
+          "XBCTXT23_PKEY"
+        ]
+      },
+      {
+        "name": "KXBCTXTMAP3",
+        "base_addr": false,
+        "fields": [
+          "XBCTXT24_PKEY",
+          "XBCTXT25_PKEY",
+          "XBCTXT26_PKEY",
+          "XBCTXT27_PKEY",
+          "XBCTXT28_PKEY",
+          "XBCTXT29_PKEY",
+          "XBCTXT30_PKEY",
+          "XBCTXT31_PKEY"
+        ]
+      },
+      {
+        "name": "ERECR0",
+        "base_addr": false,
+        "fields": [
+          "REC"
+        ]
+      },
+      {
+        "name": "ERECR1",
+        "base_addr": false,
+        "fields": [
+          "REC"
+        ]
+      },
+      {
+        "name": "ERECR2",
+        "base_addr": false,
+        "fields": [
+          "REC"
+        ]
+      },
+      {
+        "name": "ERECR3",
+        "base_addr": false,
+        "fields": [
+          "REC"
+        ]
+      }
+    ]
+  }
+]
