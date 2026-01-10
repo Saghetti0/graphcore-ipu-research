@@ -73,29 +73,29 @@ SYMBOL TABLE:
 Disassembly of section .text:
 
 00040000 <_start>:
-   40000: 03 00 80 41	sync 3
+   40000: 03 00 80 41	sync SYNCZONE_INTERNAL
 
 00040004 <_reg_parity_reset>:
    40004: 88 03 04 19  	setzi $m0, 263048
    40008: 00 f0 00 15  	runall $m0, $m15, 0
-   4000c: 02 00 80 41  	sync 2
+   4000c: 02 00 80 41  	sync SYNCZONE_LOCAL
    40010: d6 00 01 18  	call $m0, 0x40358 <_cpclr_last_end>
-   40014: 03 00 80 41  	sync 3
+   40014: 03 00 80 41  	sync SYNCZONE_INTERNAL
 
 00040018 <_bootloader_init>:
-   ; $m0 = $WORKER_BASE
+   ; $m0 = $TILE_ID
    40018: 03 00 00 41  	get $m0, 3
    ; $m1 = $m0 & 0b00111101
    4001c: 3d 80 01 42  	and $m1, $m0, 61
    ; $m2 = 1280 + $m1
    40020: 00 05 20 19  	setzi $m2, 1280
    40024: 21 10 20 44  	add $m2, $m2, $m1
-   ; $CONTROL_REG[160] = $m2
-   40028: a0 80 20 43  	put 160, $m2
+   ; $INCOMING_MUX = $m2
+   40028: a0 80 20 43  	put $INCOMING_MUX, $m2
    4002c: 28 00 a0 40  	delay 40
-   ; $CONTROL_REG[167] = 0x7fbe0
+   ; $OUTGOING_BASE = 0x7fbe0
    40030: e0 fb b7 19  	setzi $m11, 523232
-   40034: a7 80 b0 43  	put 167, $m11
+   40034: a7 80 b0 43  	put $OUTGOING_BASE, $m11
 
 00040038 <_relocate_subroutines>:
    40038: b7 00 a1 18  	call $m10, 0x402dc <_get_copy_clear_instructions>
@@ -145,22 +145,22 @@ Disassembly of section .text:
 000400dc <_slave_wait>:
    400dc: 01 00 c0 40   sans 1
    400e0: 37 00 19 13   brnzdec $m1, 0x400dc <_slave_wait>
-   400e4: 01 00 80 41   sync 1
+   400e4: 01 00 80 41   sync SYNCZONE_ANS
    400e8: 3f 00 81 40   bri 0x400fc <_send_xprds>
 
 000400ec <_master_wait>:
-   400ec: 03 00 80 41   sync 3
-   400f0: 0d 00 80 41   sync 13
+   400ec: 03 00 80 41   sync SYNCZONE_INTERNAL0
+   400f0: 0d 00 80 41   sync SYNCZONE_EXTERNAL1_MSR
 
 000400f4 <_master_send_xreq>:
    400f4: 33 00 20 78   send 1, 6, 3
-   400f8: 00 00 80 41   sync 0
+   400f8: 00 00 80 41   sync SYNCZONE_RECV
 
 000400fc <_send_xprds>:
    400fc: 02 00 00 19  	setzi $m0, 2
    40100: a6 80 00 43  	put 166, $m0
    40104: 23 00 20 78  	send 1, 4, 3
-   40108: 00 00 80 41  	sync 0
+   40108: 00 00 80 41  	sync SYNCZONE_RECV
    4010c: 00 f0 b0 01  	ld32 $m0, $m11, $m15, 0
    40110: 01 00 01 22  	add $m1, $m0, 1
    40114: 55 00 01 13  	brz $m0, 0x40154 <_xprs_pen_last>
@@ -192,7 +192,7 @@ Disassembly of section .text:
    4016c: 02 00 00 19  	setzi $m0, 2
    40170: a6 80 00 43  	put 166, $m0
    40174: 23 00 20 78  	send 1, 4, 3
-   40178: 00 00 80 41  	sync 0
+   40178: 00 00 80 41  	sync SYNCZONE_RECV
    4017c: 85 00 81 40  	bri 0x40214 <_wait_for_remaining_exchanges>
 
 00040180 <_issue_xprdl>:
@@ -245,8 +245,8 @@ Disassembly of section .text:
    40210: 60 00 81 40  	bri 0x40180 <_issue_xprdl>
 
 00040214 <_wait_for_remaining_exchanges>:
-   40214: 03 00 80 41   sync 3
-   40218: 05 00 80 41   sync 5
+   40214: 03 00 80 41   sync SYNCZONE_INTERNAL0
+   40218: 05 00 80 41   sync SYNCZONE_EXTERNAL1_SLV
    4021c: 85 00 99 13   brnzdec $m9, 0x40214 <_wait_for_remaining_exchanges>
    40220: 1c 00 71 13   brz $m7, 0x40070 <_bootload_begin>
 
@@ -282,7 +282,7 @@ Disassembly of section .text:
    40284: 00 90 b4 42  	mov	$m4, $m11
    40288: 00 40 54 19  	setzi $m5, 278528
    4028c: 07 00 60 19  	setzi $m6, 7
-   40290: 04 00 80 41  	sync 4
+   40290: 04 00 80 41  	sync SYNCZONE_EXTERNAL0_SLV
 
 00040294 <_start_tile_app>:
    40294: 07 00 00 19  	setzi $m0, 7
@@ -344,7 +344,7 @@ Disassembly of section .text:
    40314: 02 80 f3 01  	ld32 $m3, $m15, $m8, 2
    40318: 03 80 f4 01  	ld32 $m4, $m15, $m8, 3
    4031c: 13 00 20 78  	send 1, 2, 3
-   40320: 00 00 80 41  	sync 0
+   40320: 00 00 80 41  	sync SYNCZONE_RECV
    40324: 00 80 f0 01  	ld32 $m0, $m15, $m8, 0
    40328: 00 80 f1 4f  	st32 $m1, $m15, $m8, 0
    4032c: 01 80 f1 01  	ld32 $m1, $m15, $m8, 1

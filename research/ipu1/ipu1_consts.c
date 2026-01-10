@@ -156,20 +156,33 @@ const uint32_t BNET_SCTRL_DELAY = 0x0;
 const uint32_t TEXCH_TLINK_PUT_IMUX_EXCEPTION = 0x0;
 const uint32_t TEXCH_TLINK_MAX_PAYLOAD_BYTES = 0x400;
 
+/* ---------
+   CSR Common
+   ---------- */
+
+// CSR Common: $PC
 const uint32_t CSR_C_PC__INDEX = 0x0;
 const uint32_t CSR_C_PC__ADDR__SHIFT = 0x2;
 const uint32_t CSR_C_PC__ADDR__SIZE = 0x11;
 const uint32_t CSR_C_PC__ADDR__MASK = 0x1ffff;
 
+// CSR Common: $DBG_DATA
 const uint32_t CSR_C_DBG_DATA__INDEX = 0x70;
 const uint32_t CSR_C_DBG_DATA__VALUE__SHIFT = 0x0;
 const uint32_t CSR_C_DBG_DATA__VALUE__SIZE = 0x20;
 const uint32_t CSR_C_DBG_DATA__VALUE__MASK = 0xffffffff;
+
+// CSR Common: $DBG_BRK_ID
 const uint32_t CSR_C_DBG_BRK_ID__INDEX = 0x71;
 const uint32_t CSR_C_DBG_BRK_ID__CHAN_ID__SHIFT = 0x0;
 const uint32_t CSR_C_DBG_BRK_ID__CHAN_ID__SIZE = 0x1;
 const uint32_t CSR_C_DBG_BRK_ID__CHAN_ID__MASK = 0x1;
 
+/* ---------
+   CSR Supervisor
+   ---------- */
+
+// CSR Supervisor: $SSR
 const uint32_t CSR_S_SSR__INDEX = 0x1;
 const uint32_t CSR_S_SSR__LC__SHIFT = 0x0;
 const uint32_t CSR_S_SSR__LC__SIZE = 0x1;
@@ -190,6 +203,7 @@ const uint32_t CSR_S_SSR__PERR__SHIFT = 0x9;
 const uint32_t CSR_S_SSR__PERR__SIZE = 0x1;
 const uint32_t CSR_S_SSR__PERR__MASK = 0x1;
 
+// CSR Supervisor: $CR
 const uint32_t CSR_S_CR__INDEX = 0x2;
 const uint32_t CSR_S_CR__LC_CLR__SHIFT = 0x0;
 const uint32_t CSR_S_CR__LC_CLR__SIZE = 0x1;
@@ -201,11 +215,13 @@ const uint32_t CSR_S_CR__ZCWEI__SHIFT = 0x2;
 const uint32_t CSR_S_CR__ZCWEI__SIZE = 0x1;
 const uint32_t CSR_S_CR__ZCWEI__MASK = 0x1;
 
+// CSR Supervisor: $TILE_ID
 const uint32_t CSR_S_TILE_ID__INDEX = 0x3;
 const uint32_t CSR_S_TILE_ID__TILE_ID__SHIFT = 0x0;
 const uint32_t CSR_S_TILE_ID__TILE_ID__SIZE = 0xb;
 const uint32_t CSR_S_TILE_ID__TILE_ID__MASK = 0x7ff;
 
+// CSR Supervisor: $FP_ICTL
 const uint32_t CSR_S_FP_ICTL__INDEX = 0x20;
 const uint32_t CSR_S_FP_ICTL__INV__SHIFT = 0x0;
 const uint32_t CSR_S_FP_ICTL__INV__SIZE = 0x1;
@@ -226,50 +242,61 @@ const uint32_t CSR_S_FP_ICTL__NANOO__SHIFT = 0x14;
 const uint32_t CSR_S_FP_ICTL__NANOO__SIZE = 0x1;
 const uint32_t CSR_S_FP_ICTL__NANOO__MASK = 0x1;
 
+// CSR Supervisor: $WORKER0_BASE
 const uint32_t CSR_S_WORKER0_BASE__INDEX = 0x21;
 const uint32_t CSR_S_WORKER0_BASE__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_WORKER0_BASE__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_WORKER0_BASE__ADDR__MASK = 0x7ffff;
 
+// CSR Supervisor: $WORKER1_BASE
 const uint32_t CSR_S_WORKER1_BASE__INDEX = 0x22;
 const uint32_t CSR_S_WORKER1_BASE__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_WORKER1_BASE__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_WORKER1_BASE__ADDR__MASK = 0x7ffff;
 
+// CSR Supervisor: $WORKER2_BASE
 const uint32_t CSR_S_WORKER2_BASE__INDEX = 0x23;
 const uint32_t CSR_S_WORKER2_BASE__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_WORKER2_BASE__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_WORKER2_BASE__ADDR__MASK = 0x7ffff;
 
+// CSR Supervisor: $WORKER3_BASE
 const uint32_t CSR_S_WORKER3_BASE__INDEX = 0x24;
 const uint32_t CSR_S_WORKER3_BASE__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_WORKER3_BASE__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_WORKER3_BASE__ADDR__MASK = 0x7ffff;
 
+// CSR Supervisor: $WORKER4_BASE
 const uint32_t CSR_S_WORKER4_BASE__INDEX = 0x25;
 const uint32_t CSR_S_WORKER4_BASE__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_WORKER4_BASE__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_WORKER4_BASE__ADDR__MASK = 0x7ffff;
 
+// CSR Supervisor: $WORKER5_BASE
 const uint32_t CSR_S_WORKER5_BASE__INDEX = 0x26;
 const uint32_t CSR_S_WORKER5_BASE__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_WORKER5_BASE__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_WORKER5_BASE__ADDR__MASK = 0x7ffff;
 
+// CSR Supervisor: $CCCSLOAD
 const uint32_t CSR_S_CCCSLOAD__INDEX = 0x50;
 const uint32_t CSR_S_CCCSLOAD__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_CCCSLOAD__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_CCCSLOAD__ADDR__MASK = 0x7ffff;
 
+// CSR Supervisor: $SCOUNT_L
 const uint32_t CSR_S_SCOUNT_L__INDEX = 0x60;
 const uint32_t CSR_S_SCOUNT_L__VALUE__SHIFT = 0x0;
 const uint32_t CSR_S_SCOUNT_L__VALUE__SIZE = 0x20;
 const uint32_t CSR_S_SCOUNT_L__VALUE__MASK = 0xffffffff;
+
+// CSR Supervisor: $SCOUNT_U
 const uint32_t CSR_S_SCOUNT_U__INDEX = 0x61;
 const uint32_t CSR_S_SCOUNT_U__VALUE__SHIFT = 0x0;
 const uint32_t CSR_S_SCOUNT_U__VALUE__SIZE = 0x20;
 const uint32_t CSR_S_SCOUNT_U__VALUE__MASK = 0xffffffff;
 
+// CSR Supervisor: $CTXT_STS
 const uint32_t CSR_S_CTXT_STS__INDEX = 0x72;
 const uint32_t CSR_S_CTXT_STS__SU__SHIFT = 0x0;
 const uint32_t CSR_S_CTXT_STS__SU__SIZE = 0x2;
@@ -302,10 +329,13 @@ const uint32_t CSR_S_CTXT_STS__MERR__SHIFT = 0x1f;
 const uint32_t CSR_S_CTXT_STS__MERR__SIZE = 0x1;
 const uint32_t CSR_S_CTXT_STS__MERR__MASK = 0x1;
 
+// CSR Supervisor: $DBG_CTL
 const uint32_t CSR_S_DBG_CTL__INDEX = 0x73;
 const uint32_t CSR_S_DBG_CTL__CHAN_EN__SHIFT = 0x0;
 const uint32_t CSR_S_DBG_CTL__CHAN_EN__SIZE = 0x2;
 const uint32_t CSR_S_DBG_CTL__CHAN_EN__MASK = 0x3;
+
+// CSR Supervisor: $DBG_ECSR
 const uint32_t CSR_S_DBG_ECSR__INDEX = 0x74;
 const uint32_t CSR_S_DBG_ECSR__EPCM__SHIFT = 0x0;
 const uint32_t CSR_S_DBG_ECSR__EPCM__SIZE = 0x1;
@@ -316,10 +346,14 @@ const uint32_t CSR_S_DBG_ECSR__CTXT__MASK = 0x7;
 const uint32_t CSR_S_DBG_ECSR__BOS__SHIFT = 0x5;
 const uint32_t CSR_S_DBG_ECSR__BOS__SIZE = 0x1;
 const uint32_t CSR_S_DBG_ECSR__BOS__MASK = 0x1;
+
+// CSR Supervisor: $DBG_ECLR
 const uint32_t CSR_S_DBG_ECLR__INDEX = 0x75;
 const uint32_t CSR_S_DBG_ECLR__CLR__SHIFT = 0x0;
 const uint32_t CSR_S_DBG_ECLR__CLR__SIZE = 0x7;
 const uint32_t CSR_S_DBG_ECLR__CLR__MASK = 0x7f;
+
+// CSR Supervisor: $DBG_IBRK0_CTL
 const uint32_t CSR_S_DBG_IBRK0_CTL__INDEX = 0x80;
 const uint32_t CSR_S_DBG_IBRK0_CTL__ENS__SHIFT = 0x0;
 const uint32_t CSR_S_DBG_IBRK0_CTL__ENS__SIZE = 0x1;
@@ -330,14 +364,20 @@ const uint32_t CSR_S_DBG_IBRK0_CTL__ENW__MASK = 0x1;
 const uint32_t CSR_S_DBG_IBRK0_CTL__EVM__SHIFT = 0x2;
 const uint32_t CSR_S_DBG_IBRK0_CTL__EVM__SIZE = 0x1;
 const uint32_t CSR_S_DBG_IBRK0_CTL__EVM__MASK = 0x1;
+
+// CSR Supervisor: $DBG_IBRK0_PC
 const uint32_t CSR_S_DBG_IBRK0_PC__INDEX = 0x81;
 const uint32_t CSR_S_DBG_IBRK0_PC__ADDR__SHIFT = 0x2;
 const uint32_t CSR_S_DBG_IBRK0_PC__ADDR__SIZE = 0x11;
 const uint32_t CSR_S_DBG_IBRK0_PC__ADDR__MASK = 0x1ffff;
+
+// CSR Supervisor: $DBG_IBRK0_VERT
 const uint32_t CSR_S_DBG_IBRK0_VERT__INDEX = 0x82;
 const uint32_t CSR_S_DBG_IBRK0_VERT__ADDR__SHIFT = 0x2;
 const uint32_t CSR_S_DBG_IBRK0_VERT__ADDR__SIZE = 0x11;
 const uint32_t CSR_S_DBG_IBRK0_VERT__ADDR__MASK = 0x1ffff;
+
+// CSR Supervisor: $DBG_DBRK0_CTL
 const uint32_t CSR_S_DBG_DBRK0_CTL__INDEX = 0x90;
 const uint32_t CSR_S_DBG_DBRK0_CTL__MLD__SHIFT = 0x0;
 const uint32_t CSR_S_DBG_DBRK0_CTL__MLD__SIZE = 0x1;
@@ -357,49 +397,62 @@ const uint32_t CSR_S_DBG_DBRK0_CTL__MDNR__MASK = 0x1;
 const uint32_t CSR_S_DBG_DBRK0_CTL__CTXT__SHIFT = 0xf;
 const uint32_t CSR_S_DBG_DBRK0_CTL__CTXT__SIZE = 0x7;
 const uint32_t CSR_S_DBG_DBRK0_CTL__CTXT__MASK = 0x7f;
+
+// CSR Supervisor: $DBG_DBRK0_BASE
 const uint32_t CSR_S_DBG_DBRK0_BASE__INDEX = 0x91;
 const uint32_t CSR_S_DBG_DBRK0_BASE__ADDR__SHIFT = 0x0;
 const uint32_t CSR_S_DBG_DBRK0_BASE__ADDR__SIZE = 0x13;
 const uint32_t CSR_S_DBG_DBRK0_BASE__ADDR__MASK = 0x7ffff;
+
+// CSR Supervisor: $DBG_DBRK0_SIDA
 const uint32_t CSR_S_DBG_DBRK0_SIDA__INDEX = 0x92;
 const uint32_t CSR_S_DBG_DBRK0_SIDA__VALUE__SHIFT = 0x0;
 const uint32_t CSR_S_DBG_DBRK0_SIDA__VALUE__SIZE = 0x13;
 const uint32_t CSR_S_DBG_DBRK0_SIDA__VALUE__MASK = 0x7ffff;
 
+// CSR Supervisor: $INCOMING_MUX
 const uint32_t CSR_S_INCOMING_MUX__INDEX = 0xa0;
 const uint32_t CSR_S_INCOMING_MUX__TILE_ID__SHIFT = 0x0;
 const uint32_t CSR_S_INCOMING_MUX__TILE_ID__SIZE = 0xb;
 const uint32_t CSR_S_INCOMING_MUX__TILE_ID__MASK = 0x7ff;
 
+// CSR Supervisor: $INCOMING_MUXPAIR
 const uint32_t CSR_S_INCOMING_MUXPAIR__INDEX = 0xa1;
 const uint32_t CSR_S_INCOMING_MUXPAIR__TILE_ID__SHIFT = 0x0;
 const uint32_t CSR_S_INCOMING_MUXPAIR__TILE_ID__SIZE = 0xb;
 const uint32_t CSR_S_INCOMING_MUXPAIR__TILE_ID__MASK = 0x7ff;
 
+// CSR Supervisor: $INCOMING_DELTA
 const uint32_t CSR_S_INCOMING_DELTA__INDEX = 0xa2;
 const uint32_t CSR_S_INCOMING_DELTA__ADDR__SHIFT = 0x2;
 const uint32_t CSR_S_INCOMING_DELTA__ADDR__SIZE = 0x11;
 const uint32_t CSR_S_INCOMING_DELTA__ADDR__MASK = 0x1ffff;
 
+// CSR Supervisor: $INCOMING_FORMAT
 const uint32_t CSR_S_INCOMING_FORMAT__INDEX = 0xa3;
 const uint32_t CSR_S_INCOMING_FORMAT__VALUE__SHIFT = 0x0;
 const uint32_t CSR_S_INCOMING_FORMAT__VALUE__SIZE = 0x2;
 const uint32_t CSR_S_INCOMING_FORMAT__VALUE__MASK = 0x3;
 
+// CSR Supervisor: $INCOMING_BASE
 const uint32_t CSR_S_INCOMING_BASE__INDEX = 0xa4;
 const uint32_t CSR_S_INCOMING_BASE__ADDR__SHIFT = 0x2;
 const uint32_t CSR_S_INCOMING_BASE__ADDR__SIZE = 0x11;
 const uint32_t CSR_S_INCOMING_BASE__ADDR__MASK = 0x1ffff;
 
+// CSR Supervisor: $INCOMING_SINIT
 const uint32_t CSR_S_INCOMING_SINIT__INDEX = 0xa5;
 const uint32_t CSR_S_INCOMING_SINIT__ADDR__SHIFT = 0x2;
 const uint32_t CSR_S_INCOMING_SINIT__ADDR__SIZE = 0x11;
 const uint32_t CSR_S_INCOMING_SINIT__ADDR__MASK = 0x1ffff;
 
+// CSR Supervisor: $INCOMING_DCOUNT
 const uint32_t CSR_S_INCOMING_DCOUNT__INDEX = 0xa6;
 const uint32_t CSR_S_INCOMING_DCOUNT__VALUE__SHIFT = 0x0;
 const uint32_t CSR_S_INCOMING_DCOUNT__VALUE__SIZE = 0x11;
 const uint32_t CSR_S_INCOMING_DCOUNT__VALUE__MASK = 0x1ffff;
+
+// got lazy, TODO: finish
 
 const uint32_t CSR_S_OUTGOING_BASE__INDEX = 0xa7;
 const uint32_t CSR_S_OUTGOING_BASE__ADDR__SHIFT = 0x2;
@@ -440,6 +493,10 @@ const uint32_t CSR_S_EXCHANGE_ADJ__COFF__MASK = 0xf;
 const uint32_t CSR_S_EXCHANGE_ADJ__SEWS__SHIFT = 0x4;
 const uint32_t CSR_S_EXCHANGE_ADJ__SEWS__SIZE = 0x1;
 const uint32_t CSR_S_EXCHANGE_ADJ__SEWS__MASK = 0x1;
+
+/* ---------
+   CSR Worker
+   ---------- */
 
 const uint32_t CSR_W_WSR__INDEX = 0x1;
 const uint32_t CSR_W_WSR__CTXTID_M1__SHIFT = 0x0;
@@ -497,6 +554,7 @@ const uint32_t CSR_W_FP_STS__DIV0__MASK = 0x1;
 const uint32_t CSR_W_FP_STS__OFLO__SHIFT = 0x2;
 const uint32_t CSR_W_FP_STS__OFLO__SIZE = 0x1;
 const uint32_t CSR_W_FP_STS__OFLO__MASK = 0x1;
+
 const uint32_t CSR_W_FP_CLR__INDEX = 0x101;
 const uint32_t CSR_W_FP_CLR__INV__SHIFT = 0x0;
 const uint32_t CSR_W_FP_CLR__INV__SIZE = 0x1;
@@ -510,6 +568,7 @@ const uint32_t CSR_W_FP_CLR__OFLO__MASK = 0x1;
 const uint32_t CSR_W_FP_CLR__ZAACC__SHIFT = 0x3;
 const uint32_t CSR_W_FP_CLR__ZAACC__SIZE = 0x1;
 const uint32_t CSR_W_FP_CLR__ZAACC__MASK = 0x1;
+
 const uint32_t CSR_W_FP_CTL__INDEX = 0x102;
 const uint32_t CSR_W_FP_CTL__INV__SHIFT = 0x0;
 const uint32_t CSR_W_FP_CTL__INV__SIZE = 0x1;
@@ -563,6 +622,10 @@ const uint32_t CSR_W_TAS__F16_16__SHIFT = 0x10;
 const uint32_t CSR_W_TAS__F16_16__SIZE = 0x10;
 const uint32_t CSR_W_TAS__F16_16__MASK = 0xffff;
 
+/* ---------
+   Tile Debug Interface
+   ---------- */
+
 const uint32_t TDI_CTXT_STS__INDEX = 0x0;
 const uint32_t TDI_CTXT_STS__SU__SHIFT = 0x0;
 const uint32_t TDI_CTXT_STS__SU__SIZE = 0x2;
@@ -609,14 +672,17 @@ const uint32_t TDI_DBG_RBRK_VERT__INDEX = 0x2;
 const uint32_t TDI_DBG_RBRK_VERT__ADDR__SHIFT = 0x2;
 const uint32_t TDI_DBG_RBRK_VERT__ADDR__SIZE = 0x11;
 const uint32_t TDI_DBG_RBRK_VERT__ADDR__MASK = 0x1ffff;
+
 const uint32_t TDI_DBG_IEXEC__INDEX = 0x3;
 const uint32_t TDI_DBG_IEXEC__INST__SHIFT = 0x0;
 const uint32_t TDI_DBG_IEXEC__INST__SIZE = 0x20;
 const uint32_t TDI_DBG_IEXEC__INST__MASK = 0xffffffff;
+
 const uint32_t TDI_DBG_IOWNER__INDEX = 0x4;
 const uint32_t TDI_DBG_IOWNER__CTXT__SHIFT = 0x0;
 const uint32_t TDI_DBG_IOWNER__CTXT__SIZE = 0x3;
 const uint32_t TDI_DBG_IOWNER__CTXT__MASK = 0x7;
+
 const uint32_t TDI_DBG_ECSR__INDEX = 0x5;
 const uint32_t TDI_DBG_ECSR__EPCM__SHIFT = 0x0;
 const uint32_t TDI_DBG_ECSR__EPCM__SIZE = 0x1;
@@ -627,10 +693,12 @@ const uint32_t TDI_DBG_ECSR__CTXT__MASK = 0x7;
 const uint32_t TDI_DBG_ECSR__BOS__SHIFT = 0x5;
 const uint32_t TDI_DBG_ECSR__BOS__SIZE = 0x1;
 const uint32_t TDI_DBG_ECSR__BOS__MASK = 0x1;
+
 const uint32_t TDI_DBG_ECLR__INDEX = 0x6;
 const uint32_t TDI_DBG_ECLR__CLR__SHIFT = 0x0;
 const uint32_t TDI_DBG_ECLR__CLR__SIZE = 0x7;
 const uint32_t TDI_DBG_ECLR__CLR__MASK = 0x7f;
+
 const uint32_t TDI_DBG_DATA__INDEX = 0x7;
 const uint32_t TDI_DBG_DATA__VALUE__SHIFT = 0x0;
 const uint32_t TDI_DBG_DATA__VALUE__SIZE = 0x20;
@@ -649,6 +717,7 @@ const uint32_t TDI_TDI_STS__DBLE__MASK = 0x1;
 const uint32_t TDI_TDI_STS__BUSY__SHIFT = 0x3;
 const uint32_t TDI_TDI_STS__BUSY__SIZE = 0x1;
 const uint32_t TDI_TDI_STS__BUSY__MASK = 0x1;
+
 const uint32_t TDI_TDI_CLR__INDEX = 0x9;
 const uint32_t TDI_TDI_CLR__CNQ__SHIFT = 0x0;
 const uint32_t TDI_TDI_CLR__CNQ__SIZE = 0x1;
@@ -1017,6 +1086,7 @@ enum IpuSyncZone {
   IPU_ZONE_ANY = 7,
 };
 
+// presumably defines the valid arguments for the "sync" instruction
 enum TileSyncZone {
   TEXCH_SYNCZONE_RECV = 0,
   TEXCH_SYNCZONE_ANS = 1,
