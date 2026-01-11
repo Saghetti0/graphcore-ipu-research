@@ -76,15 +76,17 @@ Disassembly of section .text:
    40000: 03 00 80 41	sync SYNCZONE_INTERNAL
 
 00040004 <_reg_parity_reset>:
-   40004: 88 03 04 19  	setzi $m0, 263048
+   ; runall _worker_clear_mrf_arf, vertex_base=$mzero, vertex_stride=0
+   40004: 88 03 04 19  	setzi $m0, 0x40388 <_worker_clear_mrf_arf>
    40008: 00 f0 00 15  	runall $m0, $m15, 0
+   ; 
    4000c: 02 00 80 41  	sync SYNCZONE_LOCAL
    40010: d6 00 01 18  	call $m0, 0x40358 <_cpclr_last_end>
    40014: 03 00 80 41  	sync SYNCZONE_INTERNAL
 
 00040018 <_bootloader_init>:
    ; $m0 = $TILE_ID
-   40018: 03 00 00 41  	get $m0, 3
+   40018: 03 00 00 41  	get $m0, $TILE_ID
    ; $m1 = $m0 & 0b00111101
    4001c: 3d 80 01 42  	and $m1, $m0, 61
    ; $m2 = 1280 + $m1
@@ -114,7 +116,7 @@ Disassembly of section .text:
    4006c: 81 f3 f0 44  	zero	$m8
 
 00040070 <_bootload_begin>:
-   40070: 03 00 00 41  	get $m0, 3
+   40070: 03 00 00 41  	get $m0, $TILE_ID
    40074: 3c b0 03 42  	andc $m3, $m0, 60
    40078: 04 d0 32 42  	shr $m2, $m3, 4
    4007c: 03 80 33 42  	and $m3, $m3, 3
@@ -158,7 +160,7 @@ Disassembly of section .text:
 
 000400fc <_send_xprds>:
    400fc: 02 00 00 19  	setzi $m0, 2
-   40100: a6 80 00 43  	put 166, $m0
+   40100: a6 80 00 43  	put $INCOMING_DCOUNT, $m0
    40104: 23 00 20 78  	send 1, 4, 3
    40108: 00 00 80 41  	sync SYNCZONE_RECV
    4010c: 00 f0 b0 01  	ld32 $m0, $m11, $m15, 0
@@ -286,8 +288,8 @@ Disassembly of section .text:
 
 00040294 <_start_tile_app>:
    40294: 07 00 00 19  	setzi $m0, 7
-   40298: a9 80 00 43  	put 169, $m0
-   4029c: a7 80 f0 43  	put 167, $m15
+   40298: a9 80 00 43  	put $EXCHANGE_CTL, $m0
+   4029c: a7 80 f0 43  	put $OUTGOING_BASE, $m15
    402a0: 00 10 81 40  	bri 0x44000 <__interleave_1_end>
 
 000402a4 <_invalid_number_of_frames>:
