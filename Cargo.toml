@@ -1,7 +1,9 @@
 [workspace]
-members = ["aspen/sdk"]
+members = ["aspen/isa", "aspen/popef", "aspen/sdk"]
 resolver = "3"
 
 [workspace.dependencies]
-zerocopy = "0.8.33"
+zerocopy = { version = "0.8.33", features = ["derive"] }
 eyre = "0.6.12"
+num-derive = "0.4.2"
+num-traits = "0.2.19"

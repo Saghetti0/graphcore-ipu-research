@@ -48,6 +48,8 @@
             cmake
             py38
             lld
+            capnproto
+            lz4
           ];
           LD_LIBRARY_PATH = lib.makeLibraryPath [
             openssl
@@ -55,6 +57,7 @@
             libtinfo
             py38
             libgcc.lib
+            zlib
           ];
         };
       }
