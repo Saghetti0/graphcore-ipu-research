@@ -36,6 +36,10 @@
         inherit inputs;
         devShells.default = mkShell {
           buildInputs = [
+            (pkgs.fenix.combine [
+              pkgs.fenix.stable.defaultToolchain
+              pkgs.fenix.stable.rust-src
+            ])
             openssl
             (python3.withPackages (ps: with ps; [
               libclang
@@ -48,7 +52,6 @@
           LD_LIBRARY_PATH = lib.makeLibraryPath [
             openssl
             openssl_1_1
-            rdma-core
             libtinfo
             py38
             libgcc.lib

@@ -1,3 +1,10 @@
+# Rust
+target/
+
+# Nix
+.direnv/
+
+# Others
 docs/.obsidian
 docs/.trash
 utils/data.txt
