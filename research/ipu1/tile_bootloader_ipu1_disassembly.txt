@@ -96,7 +96,7 @@ Disassembly of section .text:
    40028: a0 80 20 43  	put $INCOMING_MUX, $m2
    4002c: 28 00 a0 40  	delay 40
    ; $OUTGOING_BASE = 0x7fbe0
-   40030: e0 fb b7 19  	setzi $m11, 523232
+   40030: e0 fb b7 19  	setzi $m11, 0x7fbe0
    40034: a7 80 b0 43  	put $OUTGOING_BASE, $m11
 
 00040038 <_relocate_subroutines>:
@@ -105,17 +105,18 @@ Disassembly of section .text:
    40040: 01 00 f2 4f  	st32 $m2, $m15, $m0, 1
    40044: 02 00 f4 4f  	st32 $m4, $m15, $m0, 2
    40048: 03 00 f5 4f  	st32 $m5, $m15, $m0, 3
-   4004c: 0c 03 14 19  	setzi $m1, 262924
-   40050: 00 80 24 19  	setzi $m2, 294912
+   4004c: 0c 03 14 19  	setzi $m1, 0x4030c
+   40050: 00 80 24 19  	setzi $m2, 0x48000
    40054: 0e 00 30 19  	setzi $m3, 14
    40058: 00 10 a1 18  	call $m10, 0x44000 <__interleave_1_end>
-   4005c: 48 03 14 19  	setzi $m1, 262984
-   40060: 00 fc 27 19  	setzi $m2, 523264
+   4005c: 48 03 14 19  	setzi $m1, 0x40348
+   40060: 00 fc 27 19  	setzi $m2, 0x7fc00
    40064: 03 00 30 19  	setzi $m3, 3
    40068: 00 10 a1 18  	call $m10, 0x44000 <__interleave_1_end>
    4006c: 81 f3 f0 44  	zero	$m8
 
 00040070 <_bootload_begin>:
+   ; $m3 = $TILE_ID & ffffffc3
    40070: 03 00 00 41  	get $m0, $TILE_ID
    40074: 3c b0 03 42  	andc $m3, $m0, 60
    40078: 04 d0 32 42  	shr $m2, $m3, 4
@@ -125,13 +126,15 @@ Disassembly of section .text:
    40088: 3f 80 02 42  	and $m2, $m0, 63
    4008c: 01 d0 31 42  	shr $m1, $m3, 1
    40090: 12 00 19 39  	sub $m9, 18, $m1
-   40094: ff ff 4f 19  	setzi $m4, 1048575
-   40098: 0f c0 44 42  	or $m4, $m4, 15728640
-   4009c: ff 3f 50 19  	setzi $m5, 16383
+   40094: ff ff 4f 19  	setzi $m4, 0xfffff
+   40098: 0f c0 44 42  	or $m4, $m4, 0xf00000
+   4009c: ff 3f 50 19  	setzi $m5, 0x3fff
+   ; *((*u32)$OUTGOING_BASE + 6) = 0xffffff
    400a0: 06 f0 b4 4f  	st32 $m4, $m11, $m15, 6
+   ; *((*u32)$OUTGOING_BASE + 7) = 0x3fff
    400a4: 07 f0 b5 4f  	st32 $m5, $m11, $m15, 7
-   400a8: df 1f 40 19  	setzi $m4, 8159
-   400ac: 00 cc 44 42  	or $m4, $m4, 3221225472
+   400a8: df 1f 40 19  	setzi $m4, 0x1fdf
+   400ac: 00 cc 44 42  	or $m4, $m4, 0xc0000000
    400b0: 0e a0 05 42  	shl $m5, $m0, 14
    400b4: 41 53 40 44  	or $m4, $m4, $m5
    400b8: 05 a0 25 42  	shl $m5, $m2, 5
@@ -139,20 +142,23 @@ Disassembly of section .text:
    400c0: 04 f0 b4 4f  	st32 $m4, $m11, $m15, 4
    400c4: 05 f0 b5 4f  	st32 $m5, $m11, $m15, 5
    400c8: 0e a0 04 42  	shl $m4, $m0, 14
-   400cc: 00 ce 44 42  	or $m4, $m4, 3758096384
-   400d0: e0 1f 44 22  	add $m4, $m4, 8160
+   400cc: 00 ce 44 42  	or $m4, $m4, 0xe0000000
+   400d0: e0 1f 44 22  	add $m4, $m4, 0x1fe0
    400d4: 02 f0 b4 4f  	st32 $m4, $m11, $m15, 2
    400d8: 3b 00 31 13  	brz $m3, 0x400ec <_master_wait>
 
 000400dc <_slave_wait>:
+   ; whatever sans is
    400dc: 01 00 c0 40   sans 1
    400e0: 37 00 19 13   brnzdec $m1, 0x400dc <_slave_wait>
    400e4: 01 00 80 41   sync SYNCZONE_ANS
    400e8: 3f 00 81 40   bri 0x400fc <_send_xprds>
 
 000400ec <_master_wait>:
-   400ec: 03 00 80 41   sync SYNCZONE_INTERNAL0
-   400f0: 0d 00 80 41   sync SYNCZONE_EXTERNAL1_MSR
+   ; sync with other tiles
+   400ec: 03 00 80 41   sync SYNCZONE_INTERNAL
+   ; sync with host
+   400f0: 0d 00 80 41   sync SYNCZONE_GS1H
 
 000400f4 <_master_send_xreq>:
    400f4: 33 00 20 78   send 1, 6, 3
@@ -192,14 +198,14 @@ Disassembly of section .text:
    40164: c0 c0 00 42  	or $m0, $m0, 201326592
    40168: 04 f0 b0 4f  	st32 $m0, $m11, $m15, 4
    4016c: 02 00 00 19  	setzi $m0, 2
-   40170: a6 80 00 43  	put 166, $m0
+   40170: a6 80 00 43  	put $INCOMING_DCOUNT, $m0
    40174: 23 00 20 78  	send 1, 4, 3
    40178: 00 00 80 41  	sync SYNCZONE_RECV
    4017c: 85 00 81 40  	bri 0x40214 <_wait_for_remaining_exchanges>
 
 00040180 <_issue_xprdl>:
    40180: 00 01 00 19  	setzi $m0, 256
-   40184: a6 80 00 43  	put 166, $m0
+   40184: a6 80 00 43  	put $INCOMING_DCOUNT, $m0
    40188: 98 01 a4 19  	setzi $m10, 262552
    4018c: 11 00 60 2a  	cmpult $m0, $m6, 17
    40190: c3 00 01 13  	brz $m0, 0x4030c <_load_frame>
@@ -247,8 +253,8 @@ Disassembly of section .text:
    40210: 60 00 81 40  	bri 0x40180 <_issue_xprdl>
 
 00040214 <_wait_for_remaining_exchanges>:
-   40214: 03 00 80 41   sync SYNCZONE_INTERNAL0
-   40218: 05 00 80 41   sync SYNCZONE_EXTERNAL1_SLV
+   40214: 03 00 80 41   sync SYNCZONE_INTERNAL
+   40218: 05 00 80 41   sync SYNCZONE_GS1H
    4021c: 85 00 99 13   brnzdec $m9, 0x40214 <_wait_for_remaining_exchanges>
    40220: 1c 00 71 13   brz $m7, 0x40070 <_bootload_begin>
 
@@ -277,19 +283,22 @@ Disassembly of section .text:
    40268: 02 00 f3 4f  	st32 $m3, $m15, $m0, 2
    4026c: 03 00 f4 4f  	st32 $m4, $m15, $m0, 3
    40270: 04 00 f5 4f  	st32 $m5, $m15, $m0, 4
-   40274: 00 fc 17 19  	setzi $m1, 523264
-   40278: 00 00 24 19  	setzi $m2, 262144
+   40274: 00 fc 17 19  	setzi $m1, 0x7fc00
+   40278: 00 00 24 19  	setzi $m2, 0x40000
    4027c: fb 00 30 19  	setzi $m3, 251
-   40280: 00 00 a4 19  	setzi $m10, 262144
+   40280: 00 00 a4 19  	setzi $m10, 0x40000
    40284: 00 90 b4 42  	mov	$m4, $m11
-   40288: 00 40 54 19  	setzi $m5, 278528
+   40288: 00 40 54 19  	setzi $m5, 0x44000
    4028c: 07 00 60 19  	setzi $m6, 7
-   40290: 04 00 80 41  	sync SYNCZONE_EXTERNAL0_SLV
+   40290: 04 00 80 41  	sync SYNCZONE_GS1
 
 00040294 <_start_tile_app>:
+   ; EXCHANGE_CTL = SWV | SEV | ACTV
    40294: 07 00 00 19  	setzi $m0, 7
    40298: a9 80 00 43  	put $EXCHANGE_CTL, $m0
+   ; $OUTGOING_BASE = 0
    4029c: a7 80 f0 43  	put $OUTGOING_BASE, $m15
+   ; jump to start of loaded code
    402a0: 00 10 81 40  	bri 0x44000 <__interleave_1_end>
 
 000402a4 <_invalid_number_of_frames>:
@@ -317,19 +326,24 @@ Disassembly of section .text:
    402c0: b1 00 a1 18  	call $m10, 0x402c4 <_exception>
 
 000402c4 <_exception>:
+   ; $EXCHANGE_CTL = ACTV
    402c4: 01 00 00 19  	setzi $m0, 1
-   402c8: a9 80 00 43  	put 169, $m0
+   402c8: a9 80 00 43  	put $EXCHANGE_CTL, $m0
+   ; zero $m0
    402cc: 00 00 00 19  	setzi $m0, 0
+   ; call $m10 puts $PC+4 (or +8 in coissued inst)
+   ; store callee function's address in $m1
    402d0: fc ff a1 22  	add $m1, $m10, -4
 
 000402d4 <_forever>:
+   ; panic and loop forever
    402d4: 01 10 80 41  	trap 1
    402d8: b5 00 81 40  	bri 0x402d4 <_forever>
 
 000402dc <_get_copy_clear_instructions>:
-   402dc: 00 40 04 19  	setzi $m0, 278528
+   402dc: 00 40 04 19  	setzi $m0, 0x44000
    402e0: 00 f0 13 19  	setzi $m1, 258048
-   402e4: d1 c4 11 42  	or $m1, $m1, 1292894208
+   402e4: d1 c4 11 42  	or $m1, $m1, 0x4d100000
    402e8: 00 30 20 19  	setzi $m2, 12288
    402ec: c2 c4 22 42  	or $m2, $m2, 1277165568
    402f0: 00 30 3f 19  	setzi $m3, 995328
