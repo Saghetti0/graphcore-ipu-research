@@ -13,7 +13,7 @@ pub enum Instructions {
   }
 }
 
-enum And {
+pub enum And {
   /// `and $mDst, $mSrc0, $mSrc1`
   MemoryReg {
 

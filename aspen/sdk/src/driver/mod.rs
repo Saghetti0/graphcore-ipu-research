@@ -2,21 +2,13 @@ pub mod discovery;
 mod ioctls;
 
 use std::{
-  ffi,
-  fs::{self, File, read_dir},
-  io,
-  ops::Range,
-  os::fd::{AsFd, AsRawFd, RawFd},
-  path::{Path, PathBuf},
-  ptr,
-  sync::atomic::{AtomicBool, Ordering},
+  fs::File,
+  os::fd::{AsRawFd, RawFd},
 };
 
-use eyre::Context;
 use memmap2::MmapMut;
 use zerocopy::FromBytes;
 
-struct Opaque;
 pub struct DeviceDriver {
   config_file: File,
   config_space: MmapMut,
@@ -25,11 +17,11 @@ pub struct DeviceDriver {
 }
 
 impl DeviceDriver {
-  fn config_fd(&self) -> RawFd {
+  pub fn config_fd(&self) -> RawFd {
     self.config_file.as_raw_fd()
   }
 
-  fn exchange_fd(&self) -> RawFd {
+  pub fn exchange_fd(&self) -> RawFd {
     self.exchange_file.as_raw_fd()
   }
 

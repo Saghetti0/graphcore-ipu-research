@@ -1,12 +1,8 @@
 use std::{
-  ffi,
   fs::{self, File, read_dir},
-  io,
-  ops::Range,
-  os::fd::{AsFd, AsRawFd},
-  path::{Path, PathBuf},
+  os::fd::AsRawFd,
+  path::PathBuf,
   ptr,
-  sync::atomic::{AtomicBool, Ordering},
 };
 
 use eyre::Context;
