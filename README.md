@@ -2,6 +2,15 @@
 
 This is a repository containing our attempt to reverse engineer the Graphcore IPU and build a new toolchain for it. Our effort is currently directed to the IPU1 chip (part of the C2 card released in 2017), as that's the hardware we have right now.
 
+## Project Layout
+`docs/` - IPU documentation made during research.
+
+`research/` - Decompilations and transformations of various files in the SDK.
+
+`aspen/` - Rust implementations of parts of the SDK.
+
+`utils/` - Various scripts used for improving the repo.
+
 ## Useful Links
 - [LLVM Fork Source Code](https://github.com/Sanae6/llvm-project-fork)
   - A fork of Graphcore's LLVM fork, adds some undocumented instructions to make it easier to decompile the bootloader and other programs.
