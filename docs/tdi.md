@@ -41,21 +41,11 @@ Used to select which context to inject instructions into via `$DBG_IEXEC`.
 
 ### `$DBG_ECSR (0x05)`
 
-Some sort of status register? Documentation states that `$DBG_ECSR:BUSY` should exist and should be set to 0 when an injected instruction is done running, but it doesn't show up in the bitfield docs... Maybe a really obscure ipu1 vs ipu2 change?
-
-| Field name | Bit field | Reset value | Access semantics | Description |
-| ---------- | --------- | ----------- | ---------------- | ----------- |
-| EPCM       | [0]       | ???         | ???              | Unknown     |
-| CTXT       | [3:1]     | ???         | ???              | Unknown     |
-| BOS        | [5]       | ???         | ???              | Unknown     |
+Mirror of [[csr#`$DBG_ECSR (0x74)`|$DBG_ECSR]]
 
 ### `$DBG_ECLR (0x06)`
 
-Unknown function. My guess is that this is a register for clearing the exception states for any of the 7 contexts, by writing a 1 to the corresponding bit in CLR.
-
-| Field name | Bit field | Reset value | Access semantics | Description |
-| ---------- | --------- | ----------- | ---------------- | ----------- |
-| CLR        | [6:0]     | ???         | ???              | Unknown     |
+Mirror of [[csr#`$DBG_ECLR (0x75)`|$DBG_ECLR]]
 
 ### `$DBG_DATA (0x07)`
 
@@ -63,14 +53,14 @@ Mirror of [[csr#`$DBG_DATA (0x70)`|$DBG_DATA]].
 
 ### `$TDI_STS (0x08)`
 
-TDI status register of some sort. Earlier, the documentation probably meant to say `$TDI_STS:BUSY` rather than `$DBG_ECSR:BUSY`.
+TDI status register of some sort. According to documentation, `BUSY` should be `1` when an injected instruction is busy executing, and `0` when it's done.
 
-| Field name | Bit field | Reset value | Access semantics | Description |
-| ---------- | --------- | ----------- | ---------------- | ----------- |
-| CNQ        | [0]       | ???         | ???              | Unknown     |
-| INV        | [1]       | ???         | ???              | Unknown     |
-| DBLE       | [2]       | ???         | ???              | Unknown     |
-| BUSY       | [3]       | ???         | ???              | Unknown     |
+| Field name | Bit field | Reset value | Access semantics | Description                    |
+| ---------- | --------- | ----------- | ---------------- | ------------------------------ |
+| CNQ        | [0]       | ???         | ???              | Unknown                        |
+| INV        | [1]       | ???         | ???              | Unknown                        |
+| DBLE       | [2]       | ???         | ???              | Unknown                        |
+| BUSY       | [3]       | ???         | ???              | Injected instruction is active |
 
 ### `$TDI_CLR (0x09)`
 
@@ -102,8 +92,12 @@ TDI control register of some sort.
 ---
 
 **Theories**
-- Inject instructions into a tile! Write the context ID (an integer between 0 and 6, where 0 is the supervisor and 1-6 are the workers) into `TDI_DBG_IOWNER`, and then write a 32-bit instruction word into `TDI_DBG_IEXEC`. This will inject the instruction into the specified context. Only works if the context is either in the 
+- Inject instructions into a tile! Write the context ID (an integer between 0 and 6, where 0 is the supervisor and 1-6 are the workers) into `TDI_DBG_IOWNER`, and then write a 32-bit instruction word into `TDI_DBG_IEXEC`. This will inject the instruction into the specified context. Only works if the context is either in the Inactive or Excepted states. %%Tile vertex docs mention quiescent Supervisor states, see glossary for **Quiescent**.%%
 - Various abbreviations
 	- IBRK -> instruction break
 	- DBRK -> data break
 	- RBRK -> retirement break
+	- PBRK -> patched break (trap)
+
+
+##### Injection

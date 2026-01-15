@@ -35,45 +35,40 @@ Documented (as part of the worker CSR), see Graphcore ISA docs.
 
 Unknown function. NOTE: seems to store a bunch of flags, also referenced by the documentation a few times. Potentially: supervisor state register
 
-|Field name|Bit field|Reset value|Access semantics|Description|
-|-|-|-|-|-|
-|LC|[0]|???|???|Unknown|
-|GC|[1]|???|???|Unknown|
-|ANS|[2]|???|???|Unknown|
-|RAERR|[3]|???|???|Unknown|
-|ETYPE|[7:4]|???|???|Unknown|
-|PERR|[9]|???|???|Unknown|
+| Field name | Bit field | Reset value | Access semantics | Description |
+| ---------- | --------- | ----------- | ---------------- | ----------- |
+| LC         | [0]       | ???         | ???              | Unknown     |
+| GC         | [1]       | ???         | ???              | Unknown     |
+| ANS        | [2]       | ???         | ???              | Unknown     |
+| RAERR      | [3]       | ???         | ???              | Unknown     |
+| ETYPE      | [7:4]     | ???         | ???              | Unknown     |
+| PERR       | [9]       | ???         | ???              | Unknown     |
 
 ### `$CR (0x02)`
 
 Unknown function.
 
-|Field name|Bit field|Reset value|Access semantics|Description|
-|-|-|-|-|-|
-|LC_CLR|[0]|???|???|Unknown|
-|LC_SET|[1]|???|???|Unknown|
-|ZCWEI|[2]|???|???|Unknown|
+| Field name | Bit field | Reset value | Access semantics | Description |
+| ---------- | --------- | ----------- | ---------------- | ----------- |
+| LC_CLR     | [0]       | ???         | ???              | Unknown     |
+| LC_SET     | [1]       | ???         | ???              | Unknown     |
+| ZCWEI      | [2]       | ???         | ???              | Unknown     |
 
 ### `$TILE_ID (0x03)`
 
 The tile ID that the supervisor is running on. Read-only, presumably.
 
-|Field name|Bit field|Reset value|Access semantics|Description|
-|-|-|-|-|-|
-|TILE_ID|[10:0]|???|???|Unknown|
+| Field name | Bit field | Reset value | Access semantics | Description     |
+| ---------- | --------- | ----------- | ---------------- | --------------- |
+| TILE_ID    | [10:0]    | (Tile ID)   | RO               | Current tile ID |
 
 ### `$FP_ICTL (0x20)`
 
 Documented, see Graphcore ISA docs.
 
-### `$WORKER0_BASE (0x21)`
-### `$WORKER1_BASE (0x22)`
-### `$WORKER2_BASE (0x23)`
-### `$WORKER3_BASE (0x24)`
-### `$WORKER4_BASE (0x25)`
-### `$WORKER5_BASE (0x26)`
-
-Holds the `$WORKER_BASE` CSR for each individual worker (see Graphcore's docs). Docs say that each worker's `$WORKER_BASE` is a read alias of this. Unclear if these are writable by any means other than the `run` and `runall` instructions.
+### `$WORKERn_BASE (0x21-0x26)`
+Holds the `$WORKER_BASE` CSR for each individual worker (see Graphcore's docs). Docs say that each worker's `$WORKER_BASE` is a read alias of this. The supervisor is responsible for manually setting these before a `run` or `runall` instruction. Attempts to modify an active worker's base CSR will result in an exception.
+This register is used as a stack base in generated graph code.
 
 ### `$CCCSLOAD (0x50)`
 
@@ -100,15 +95,15 @@ Unknown function. Speculation: an enable/disable for "debugging channels" (indiv
 
 Unknown function. Probably related to all the other debugging stuff.
 
-| Field name | Bit field | Reset value | Access semantics | Description |
-| ---------- | --------- | ----------- | ---------------- | ----------- |
-| EPCM       | [0]       | ???         | ???              | Unknown     |
-| CTXT       | [3:1]     | ???         | ???              | Unknown     |
-| BOS        | [5]       | ???         | ???              | Unknown     |
+| Field name | Bit field | Reset value | Access semantics | Description                             |
+| ---------- | --------- | ----------- | ---------------- | --------------------------------------- |
+| EPCM       | [0]       | ???         | ???              | Enable PC Mirror                        |
+| CTXT       | [3:1]     | ???         | ???              | Target context (for ECSR specifically?) |
+| BOS        | [5]       | ???         | ???              | Break on sync?                          |
 
 ### `$DBG_ECLR (0x75)`
 
-Unknown function. Probably related to debug, responsible for clearing some sort of flag?
+Unknown function. My guess is that this is a register for clearing some currently unknown bit of state for any of the 7 contexts, by writing a 1 to the corresponding bit in CLR.
 
 |Field name|Bit field|Reset value|Access semantics|Description|
 |-|-|-|-|-|
@@ -134,7 +129,7 @@ Unknown function. Probably defines the program counter to break at for instructi
 
 ### `$DBG_IBRK0_VERT (0x82)`
 
-Unknown function. Related to its sister registers `DBG_IBRK0`.
+Unknown function. Related to its sister registers `DBG_IBRK0_*`.
 
 | Field name | Bit field | Reset value | Access semantics | Description |
 | ---------- | --------- | ----------- | ---------------- | ----------- |
@@ -171,11 +166,11 @@ Unknown function. Probably related to setting data breakpoints.
 
 ### `$INCOMING_MUX (0xa0)`
 
-Unknown function. Probably related to communications?
+Unknown function. Probably the tile to receive data from.
 
-|Field name|Bit field|Reset value|Access semantics|Description|
-|-|-|-|-|-|
-|TILE_ID|[10:0]|???|???|Unknown|
+| Field name | Bit field | Reset value | Access semantics | Description |
+| ---------- | --------- | ----------- | ---------------- | ----------- |
+| TILE_ID    | [10:0]    | ???         | ???              | Unknown     |
 
 ### `$INCOMING_MUXPAIR (0xa1)`
 
@@ -245,13 +240,13 @@ Unknown function. Probably related to communications?
 
 Unknown function. Probably related to communications?
 
-|Field name|Bit field|Reset value|Access semantics|Description|
-|-|-|-|-|-|
-|ACTV|[0]|???|???|Unknown|
-|SEV|[1]|???|???|Unknown|
-|SWV|[2]|???|???|Unknown|
-|S64|[3]|???|???|Unknown|
-|ATMC|[4]|???|???|Unknown|
+| Field name | Bit field | Reset value | Access semantics | Description       |
+| ---------- | --------- | ----------- | ---------------- | ----------------- |
+| ACTV       | [0]       | ???         | ???              | Unknown (Active?) |
+| SEV        | [1]       | ???         | ???              | Unknown           |
+| SWV        | [2]       | ???         | ???              | Unknown           |
+| S64        | [3]       | ???         | ???              | Unknown           |
+| ATMC       | [4]       | ???         | ???              | Unknown (Atomic?) |
 
 ### `$ANS_DCOUNT (0xaa)`
 
@@ -283,6 +278,7 @@ Documented, see Graphcore's ISA docs.
 ### `$WORKER_BASE (0x03)`
 
 Documented, see Graphcore's ISA docs. 
+This register is used as a stack base in generated graph code.
 
 ### `$REPEAT_COUNT (0x04)`
 
