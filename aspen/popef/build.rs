@@ -5,5 +5,4 @@ fn main() {
     // .file("capnp/bar.capnp")
     .run()
     .expect("schema compiler command");
-  
 }

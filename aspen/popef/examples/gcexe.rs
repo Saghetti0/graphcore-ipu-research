@@ -23,7 +23,6 @@ fn main() {
   let (header, archive) = GcExeHeader::ref_from_prefix(&file).unwrap();
   let (archive, metadata) = archive.split_at(header.archive_compressed_size as _);
 
-
   println!("{} {}", archive.len(), header.archive_compressed_size);
   println!("{} {}", metadata.len(), header.metadata_compressed_size);
 
@@ -48,5 +47,8 @@ fn main() {
   fs::write(&args[3], &metadata_decomp).unwrap();
 
   assert_eq!(archive_decomp.len(), header.archive_decompressed_size as _);
-  assert_eq!(metadata_decomp.len(), header.metadata_decompressed_size as _);
+  assert_eq!(
+    metadata_decomp.len(),
+    header.metadata_decompressed_size as _
+  );
 }

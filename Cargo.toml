@@ -7,3 +7,5 @@ zerocopy = { version = "0.8.33", features = ["derive"] }
 eyre = "0.6.12"
 num-derive = "0.4.2"
 num-traits = "0.2.19"
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.22", features = ["env-filter"] }

@@ -10,18 +10,12 @@ pub enum Instructions {
   /// determines which event causes code exection to continues.
   Sync {
     sync_zone: SyncZone,
-  }
+  },
 }
 
 pub enum And {
   /// `and $mDst, $mSrc0, $mSrc1`
-  MemoryReg {
-
-  },
+  MemoryReg {},
   /// `and $mDst, $mSrc, $zimm12`
-  MemoryImm {
-    dest: u8,
-    src: u8,
-    imm: u16,
-  },
+  MemoryImm { dest: u8, src: u8, imm: u16 },
 }
