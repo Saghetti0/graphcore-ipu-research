@@ -128,6 +128,20 @@ impl<Transport: ICUTransport> ICU<Transport> {
       selected: message[2],
     })
   }
+
+  pub fn clear_status(&mut self) -> eyre::Result<()> {
+    let message = [
+      encode_op_word(0, CommandOp::ClearStatus, 0x20c),
+      0,
+      0,
+      0,
+      0,
+    ];
+
+    self.transport.transfer(message)?;
+
+    Ok(())
+  }
   
   pub fn reboot(&mut self, image_to_reboot_to: RebootImage) -> eyre::Result<()> {
     let message = [

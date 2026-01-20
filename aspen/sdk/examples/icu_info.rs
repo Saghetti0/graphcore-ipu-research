@@ -64,5 +64,7 @@ fn main() {
     }
   }
 
-  icu.reboot(RebootImage::Image0).unwrap();
+  icu.clear_status()
+
+  // icu.reboot(RebootImage::Image0).unwrap();
 }
