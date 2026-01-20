@@ -13,32 +13,32 @@ fn main() {
 
   info!("starting conv with ICU");
 
-  match icu.read_board_type() {
-    Ok(board_type) => {
-      info!("board type: {board_type:?}")
-    }
-    Err(error) => {
-      error!("failed to read board type: {error}")
-    }
-  }
+  // match icu.read_board_type() {
+  //   Ok(board_type) => {
+  //     info!("board type: {board_type:?}")
+  //   }
+  //   Err(error) => {
+  //     error!("failed to read board type: {error}")
+  //   }
+  // }
 
-  match icu.read_firmware_version() {
-    Ok(version) => {
-      info!("firmware revision: {version:?}")
-    }
-    Err(error) => {
-      error!("failed to read firmware revision: {error}")
-    }
-  }
+  // match icu.read_firmware_version() {
+  //   Ok(version) => {
+  //     info!("firmware revision: {version:?}")
+  //   }
+  //   Err(error) => {
+  //     error!("failed to read firmware revision: {error}")
+  //   }
+  // }
 
-  match icu.read_hardware_id() {
-    Ok(hardware_id) => {
-      info!("hardware id: {hardware_id:?}")
-    }
-    Err(error) => {
-      error!("failed to read hardware id: {error}")
-    }
-  }
+  // match icu.read_hardware_id() {
+  //   Ok(hardware_id) => {
+  //     info!("hardware id: {hardware_id:?}")
+  //   }
+  //   Err(error) => {
+  //     error!("failed to read hardware id: {error}")
+  //   }
+  // }
 
   // not available on icu 1.0
   //  let mut print_image = |image| match icu.read_image_version(image) {
