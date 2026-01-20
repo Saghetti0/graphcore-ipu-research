@@ -86,24 +86,31 @@ impl USBTransport {
 
 impl ICUTransport for USBTransport {
   fn transfer(&mut self, message: ICUMessage) -> eyre::Result<ICUMessage> {
-    trace!("starting write {:08X?}", message);
-    self
-      .out_ep
-      .write_all(message.as_bytes())
-      .context("failed to send message")?;
+    self.send(message)?;
 
-    self
-      .out_ep
-      .flush()
-      .context("failed to flush message")?;
     trace!("starting read");
+
     let mut out_message: ICUMessage = [0; 5];
     self
       .in_ep
       .read_exact(out_message.as_mut_bytes())
       .context("failed to receive message")?;
+
     trace!("transfer completed successfully: {out_message:08X?}");
 
     Ok(out_message)
+  }
+
+  fn send(&mut self, message: ICUMessage) -> eyre::Result<()> {
+    trace!("starting write {:08X?}", message);
+
+    self
+      .out_ep
+      .write_all(message.as_bytes())
+      .context("failed to send message")?;
+
+    self.out_ep.flush().context("failed to flush message")?;
+
+    Ok(())
   }
 }

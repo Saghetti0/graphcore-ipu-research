@@ -3,6 +3,7 @@ pub enum CommandOp {
   ReadFirmwareVersion = 4,
   ReadBoardType = 5,
   ReadImageVersion = 13,
+  Reboot = 16,
   ReadBootStatus = 17,
   StartFirmwareUpgrade = 40,
   WriteUpgradeChunk = 41,

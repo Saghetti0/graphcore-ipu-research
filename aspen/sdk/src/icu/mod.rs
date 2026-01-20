@@ -128,6 +128,20 @@ impl<Transport: ICUTransport> ICU<Transport> {
       selected: message[2],
     })
   }
+  
+  pub fn reboot(&mut self, image_to_reboot_to: RebootImage) -> eyre::Result<()> {
+    let message = [
+      encode_op_word(0, CommandOp::Reboot, 0x20c),
+      image_to_reboot_to as _,
+      0,
+      0,
+      0,
+    ];
+
+    let message = self.transport.transfer(message)?;
+
+    Ok(())
+  }
 
   pub fn upgrade(
     &mut self,
@@ -211,6 +225,11 @@ pub struct BootStatus {
   pub selected: u32,
 }
 
+pub enum RebootImage {
+  Image0 = 0,
+  Image1 = 1,
+}
+
 pub enum Image {
   Image0 = 0,
   Image1 = 1,
@@ -234,6 +253,11 @@ pub fn encode_op_word(version: u8, op: CommandOp, lower: u16) -> u32 {
 
 pub const MESSAGE_SIZE: usize = std::mem::size_of::<ICUMessage>();
 
+/// The transport used to communicate with the ICU
 pub trait ICUTransport {
+  /// Sends a message to the ICU and return the response.
   fn transfer(&mut self, message: ICUMessage) -> eyre::Result<ICUMessage>;
+
+  /// Sends a message to the ICU without expecting a response
+  fn send(&mut self, message: ICUMessage) -> eyre::Result<()>;
 }

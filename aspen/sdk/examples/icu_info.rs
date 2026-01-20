@@ -1,4 +1,4 @@
-use aspen_sdk::icu::{ICU, Image, usb::USBTransport};
+use aspen_sdk::icu::{ICU, Image, RebootImage, usb::USBTransport};
 use tracing::{error, info};
 
 fn main() {
@@ -40,19 +40,21 @@ fn main() {
     }
   }
 
-//  let mut print_image = |image| match icu.read_image_version(image) {
-//    Ok(version) => {
-//      info!("image version: {version:?}")
-//    }
-//    Err(error) => {
-//      error!("failed to read image version: {error}")
-//    }
-//  };
-//
-//  print_image(Image::Image0);
-//  print_image(Image::Image1);
-//  print_image(Image::Bootloader);
-//
+  // not available on icu 1.0
+  //  let mut print_image = |image| match icu.read_image_version(image) {
+  //    Ok(version) => {
+  //      info!("image version: {version:?}")
+  //    }
+  //    Err(error) => {
+  //      error!("failed to read image version: {error}")
+  //    }
+  //  };
+  //
+  //  print_image(Image::Image0);
+  //  print_image(Image::Image1);
+  //  print_image(Image::Bootloader);
+  //
+
   match icu.read_boot_status() {
     Ok(boot_status) => {
       info!("boot status: {boot_status:?}")
@@ -62,4 +64,5 @@ fn main() {
     }
   }
 
+  icu.reboot(RebootImage::Image1).unwrap();
 }
