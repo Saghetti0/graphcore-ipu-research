@@ -131,7 +131,7 @@ impl<Transport: ICUTransport> ICU<Transport> {
   
   pub fn reboot(&mut self, image_to_reboot_to: RebootImage) -> eyre::Result<()> {
     let message = [
-      encode_op_word(0, CommandOp::Reboot, 0x20c),
+      encode_op_word(8, CommandOp::Reboot, 0x20c),
       image_to_reboot_to as _,
       0,
       0,
