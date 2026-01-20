@@ -57,12 +57,12 @@ fn main() {
 
   match icu.read_boot_status() {
     Ok(boot_status) => {
-      info!("boot status: {boot_status:?}")
+      info!("boot status: {boot_status:08X?}")
     }
     Err(error) => {
       error!("failed to read boot status: {error}")
     }
   }
 
-  icu.reboot(RebootImage::Image1).unwrap();
+  icu.reboot(RebootImage::Image0).unwrap();
 }

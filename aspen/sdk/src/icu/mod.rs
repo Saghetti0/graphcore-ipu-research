@@ -138,7 +138,7 @@ impl<Transport: ICUTransport> ICU<Transport> {
       0,
     ];
 
-    let message = self.transport.transfer(message)?;
+    self.transport.send(message)?;
 
     Ok(())
   }
