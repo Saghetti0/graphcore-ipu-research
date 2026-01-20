@@ -36,6 +36,23 @@ impl<Transport: ICUTransport> ICU<Transport> {
   //   todo!()
   // }
 
+  pub fn read_hardware_id(&mut self) -> eyre::Result<HardwareId> {
+    let message = [
+      encode_op_word(0, CommandOp::ReadHardwareId, 0x20c),
+      0,
+      0,
+      0,
+      0,
+    ];
+
+    let message = self.transport.transfer(message)?;
+
+    Ok(HardwareId {
+      pcb: message[0] as u8,
+      bom: (message[0] >> 8) as u8,
+    })
+  }
+
   pub fn read_firmware_version(&mut self) -> eyre::Result<FirmwareVersion> {
     let message = [
       encode_op_word(0, CommandOp::ReadFirmwareVersion, 0x20c),
@@ -90,7 +107,7 @@ impl<Transport: ICUTransport> ICU<Transport> {
 
     let message = self.transport.transfer(message)?;
 
-    let str = CStr::from_bytes_with_nul(message[1..5].as_bytes())
+    let str = CStr::from_bytes_until_nul(message.as_bytes())
       .context("returned string was not a cstring")?;
     Ok(str.to_owned())
   }
@@ -171,6 +188,12 @@ impl<Transport: ICUTransport> ICU<Transport> {
 pub enum UpgradeTarget {
   Bootloader,
   Firmware,
+}
+
+#[derive(Clone, Debug)]
+pub struct HardwareId {
+  pub pcb: u8,
+  pub bom: u8,
 }
 
 #[derive(Clone, Debug)]

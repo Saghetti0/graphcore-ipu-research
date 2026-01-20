@@ -10,7 +10,7 @@ use nusb::{
   io::{EndpointRead, EndpointWrite},
   transfer::{Bulk, In, Out},
 };
-use tracing::debug;
+use tracing::{debug, trace};
 use zerocopy::IntoBytes;
 
 use crate::icu::{ICUMessage, ICUTransport, MESSAGE_SIZE};
@@ -31,7 +31,10 @@ impl USBTransport {
       return Ok(None);
     };
 
+    debug!("opening device");
+
     let device = device.open().wait().context("failed to open the device")?;
+    debug!("opened device!");
 
     Self::new(device).map(Some)
   }
@@ -69,11 +72,13 @@ impl USBTransport {
     let in_ep = interface
       .endpoint::<Bulk, In>(0x81)
       .context("failed to get IN endpoint")?
-      .reader(MESSAGE_SIZE);
+      .reader(MESSAGE_SIZE)
+      .with_read_timeout(Duration::from_secs(5));
     let out_ep = interface
       .endpoint::<Bulk, Out>(0x1)
       .context("failed to get IN endpoint")?
-      .writer(MESSAGE_SIZE);
+      .writer(MESSAGE_SIZE)
+      .with_write_timeout(Duration::from_secs(5));
 
     Ok(Self { in_ep, out_ep })
   }
@@ -81,16 +86,23 @@ impl USBTransport {
 
 impl ICUTransport for USBTransport {
   fn transfer(&mut self, message: ICUMessage) -> eyre::Result<ICUMessage> {
+    trace!("starting write {:08X?}", message);
     self
       .out_ep
       .write_all(message.as_bytes())
       .context("failed to send message")?;
 
+    self
+      .out_ep
+      .flush()
+      .context("failed to flush message")?;
+    trace!("starting read");
     let mut out_message: ICUMessage = [0; 5];
     self
       .in_ep
       .read_exact(out_message.as_mut_bytes())
       .context("failed to receive message")?;
+    trace!("transfer completed successfully: {out_message:08X?}");
 
     Ok(out_message)
   }

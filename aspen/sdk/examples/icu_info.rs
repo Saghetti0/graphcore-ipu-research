@@ -2,12 +2,16 @@ use aspen_sdk::icu::{ICU, Image, usb::USBTransport};
 use tracing::{error, info};
 
 fn main() {
-  tracing_subscriber::fmt().init();
+  tracing_subscriber::fmt()
+    .with_max_level(tracing::Level::TRACE)
+    .init();
   let transport = USBTransport::first_device()
     .unwrap()
     .expect("no graphcore card could be found");
 
   let mut icu = ICU::new(transport);
+
+  info!("starting conv with ICU");
 
   match icu.read_board_type() {
     Ok(board_type) => {
@@ -27,19 +31,28 @@ fn main() {
     }
   }
 
-  let mut print_image = |image| match icu.read_image_version(image) {
-    Ok(version) => {
-      info!("image version: {version:?}")
+  match icu.read_hardware_id() {
+    Ok(hardware_id) => {
+      info!("hardware id: {hardware_id:?}")
     }
     Err(error) => {
-      error!("failed to read image version: {error}")
+      error!("failed to read hardware id: {error}")
     }
-  };
+  }
 
-  print_image(Image::Image0);
-  print_image(Image::Image1);
-  print_image(Image::Bootloader);
-
+//  let mut print_image = |image| match icu.read_image_version(image) {
+//    Ok(version) => {
+//      info!("image version: {version:?}")
+//    }
+//    Err(error) => {
+//      error!("failed to read image version: {error}")
+//    }
+//  };
+//
+//  print_image(Image::Image0);
+//  print_image(Image::Image1);
+//  print_image(Image::Bootloader);
+//
   match icu.read_boot_status() {
     Ok(boot_status) => {
       info!("boot status: {boot_status:?}")

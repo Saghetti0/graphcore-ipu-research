@@ -1,4 +1,5 @@
 pub enum CommandOp {
+  ReadHardwareId = 3,
   ReadFirmwareVersion = 4,
   ReadBoardType = 5,
   ReadImageVersion = 13,
